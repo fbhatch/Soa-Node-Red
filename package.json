@@ -1,0 +1,12 @@
+{
+    "name": "Soa-Node-Red",
+    "description": "SOA 2023",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flow.json",
+            "credentialsFile": "flow_cred.json"
+        }
+    }
+}
