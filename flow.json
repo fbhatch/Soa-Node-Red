@@ -1,1 +1,381 @@
-[]
+[
+    {
+        "id": "a4016556e17b5c1d",
+        "type": "tab",
+        "label": "Config",
+        "disabled": false,
+        "info": "Backend config ",
+        "env": []
+    },
+    {
+        "id": "24dfb8ef33f23156",
+        "type": "tab",
+        "label": "Auth",
+        "disabled": false,
+        "info": "Backend Auth",
+        "env": []
+    },
+    {
+        "id": "215762e78937528b",
+        "type": "inject",
+        "z": "a4016556e17b5c1d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 180,
+        "wires": [
+            [
+                "fa75a55c1facad92"
+            ]
+        ]
+    },
+    {
+        "id": "fa75a55c1facad92",
+        "type": "file in",
+        "z": "a4016556e17b5c1d",
+        "name": "Reading Project Settings",
+        "filename": "/data/config.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 370,
+        "y": 180,
+        "wires": [
+            [
+                "274e08b421da8a4c"
+            ]
+        ]
+    },
+    {
+        "id": "274e08b421da8a4c",
+        "type": "json",
+        "z": "a4016556e17b5c1d",
+        "name": "To Object",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 560,
+        "y": 180,
+        "wires": [
+            [
+                "30111c67affe5831"
+            ]
+        ]
+    },
+    {
+        "id": "30111c67affe5831",
+        "type": "change",
+        "z": "a4016556e17b5c1d",
+        "name": "Save Settings",
+        "rules": [
+            {
+                "t": "set",
+                "p": "data",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 180,
+        "wires": [
+            [
+                "272943c8ddf8b294"
+            ]
+        ]
+    },
+    {
+        "id": "272943c8ddf8b294",
+        "type": "link out",
+        "z": "a4016556e17b5c1d",
+        "name": "Output Global Config",
+        "mode": "link",
+        "links": [
+            "9eb59bdd79987113"
+        ],
+        "x": 875,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3f9725ac22de3368",
+        "type": "watch",
+        "z": "a4016556e17b5c1d",
+        "name": "Settings File Observer",
+        "files": "/data/config.json",
+        "recursive": "",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "fa75a55c1facad92"
+            ]
+        ]
+    },
+    {
+        "id": "5ddd8e81bae42328",
+        "type": "catch",
+        "z": "a4016556e17b5c1d",
+        "name": "Settings File doesnt exists",
+        "scope": [
+            "fa75a55c1facad92"
+        ],
+        "uncaught": false,
+        "x": 370,
+        "y": 300,
+        "wires": [
+            [
+                "3ecd2c74440758b6"
+            ]
+        ]
+    },
+    {
+        "id": "3ecd2c74440758b6",
+        "type": "function",
+        "z": "a4016556e17b5c1d",
+        "name": "Create Default Settings File",
+        "func": "msg.payload = {\n    \"urlBase\": \"http://tridentisimo.moo.com\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 300,
+        "wires": [
+            [
+                "7cd32969a127584f"
+            ]
+        ]
+    },
+    {
+        "id": "7cd32969a127584f",
+        "type": "file",
+        "z": "a4016556e17b5c1d",
+        "name": "Write Settings File",
+        "filename": "/data/config.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 870,
+        "y": 300,
+        "wires": [
+            [
+                "5f3ebd2c4b0ec8c7"
+            ]
+        ]
+    },
+    {
+        "id": "5f3ebd2c4b0ec8c7",
+        "type": "delay",
+        "z": "a4016556e17b5c1d",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1060,
+        "y": 300,
+        "wires": [
+            [
+                "fa75a55c1facad92"
+            ]
+        ]
+    },
+    {
+        "id": "26a516455a83df78",
+        "type": "http in",
+        "z": "a4016556e17b5c1d",
+        "name": "HTTP Settings Return",
+        "url": "/config",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "18af7c3b2762f0f3"
+            ]
+        ]
+    },
+    {
+        "id": "ebc4dc30845099be",
+        "type": "http in",
+        "z": "a4016556e17b5c1d",
+        "name": "HTTP Settings Update",
+        "url": "/config",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 460,
+        "wires": [
+            [
+                "50618526bee2d8b3"
+            ]
+        ]
+    },
+    {
+        "id": "18af7c3b2762f0f3",
+        "type": "file in",
+        "z": "a4016556e17b5c1d",
+        "name": "Reading Project Settings",
+        "filename": "/data/config.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 370,
+        "y": 380,
+        "wires": [
+            [
+                "d11e1671314218cb"
+            ]
+        ]
+    },
+    {
+        "id": "d11e1671314218cb",
+        "type": "json",
+        "z": "a4016556e17b5c1d",
+        "name": "To Object",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 580,
+        "y": 380,
+        "wires": [
+            [
+                "a962ba020c04787a"
+            ]
+        ]
+    },
+    {
+        "id": "a962ba020c04787a",
+        "type": "http response",
+        "z": "a4016556e17b5c1d",
+        "name": "",
+        "statusCode": "",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 710,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "50618526bee2d8b3",
+        "type": "file",
+        "z": "a4016556e17b5c1d",
+        "name": "Write Settings File",
+        "filename": "/data/config.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 350,
+        "y": 460,
+        "wires": [
+            [
+                "16bb1117458b5a80"
+            ]
+        ]
+    },
+    {
+        "id": "16bb1117458b5a80",
+        "type": "http response",
+        "z": "a4016556e17b5c1d",
+        "name": "",
+        "statusCode": "",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 550,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9eb59bdd79987113",
+        "type": "link in",
+        "z": "24dfb8ef33f23156",
+        "name": "link in 1",
+        "links": [
+            "272943c8ddf8b294"
+        ],
+        "x": 155,
+        "y": 80,
+        "wires": [
+            [
+                "438ac039996df37b"
+            ]
+        ]
+    },
+    {
+        "id": "438ac039996df37b",
+        "type": "change",
+        "z": "24dfb8ef33f23156",
+        "name": "Setting Local Var",
+        "rules": [
+            {
+                "t": "set",
+                "p": "urlBase",
+                "pt": "msg",
+                "to": "data.urlBase",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "authToken",
+                "pt": "msg",
+                "to": "data.authToken.token",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    }
+]
