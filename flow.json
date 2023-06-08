@@ -174,7 +174,7 @@
         "type": "mongodb-config",
         "hostname": "192.168.192.210",
         "port": "27017",
-        "db": "soa",
+        "db": "soa?authSource=admin",
         "name": ""
     },
     {
@@ -1390,8 +1390,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 860,
-        "y": 120,
+        "x": 920,
+        "y": 160,
         "wires": []
     },
     {
@@ -1403,8 +1403,8 @@
             "12e00a6e53826897"
         ],
         "uncaught": false,
-        "x": 650,
-        "y": 120,
+        "x": 710,
+        "y": 160,
         "wires": [
             [
                 "7b6123baa1f0aeb8"
@@ -1417,28 +1417,16 @@
         "z": "dba4f1ac499b6a24",
         "mongodb": "bc46a78fce45a903",
         "name": "",
-        "collection": "soa",
+        "collection": "hola",
         "operation": "find",
         "upsert": false,
         "multi": false,
-        "x": 530,
-        "y": 520,
+        "x": 700,
+        "y": 60,
         "wires": [
-            []
-        ]
-    },
-    {
-        "id": "fc9f40678116a7f8",
-        "type": "mongodb-aleph-in",
-        "z": "dba4f1ac499b6a24",
-        "mongodb": "5dab060f7ebe2415",
-        "name": "",
-        "collection": "",
-        "operation": "find",
-        "x": 520,
-        "y": 380,
-        "wires": [
-            []
+            [
+                "d6d0b3a9e5efcc46"
+            ]
         ]
     },
     {
@@ -1458,10 +1446,109 @@
         "wires": []
     },
     {
+        "id": "d6d0b3a9e5efcc46",
+        "type": "debug",
+        "z": "dba4f1ac499b6a24",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "f340a2bac7c633f6",
+        "type": "inject",
+        "z": "dba4f1ac499b6a24",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 340,
+        "y": 60,
+        "wires": [
+            [
+                "12e00a6e53826897"
+            ]
+        ]
+    },
+    {
+        "id": "c6db2d856333cb76",
+        "type": "change",
+        "z": "dba4f1ac499b6a24",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "id",
+                "pt": "global",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "40244ed54d350f7f",
+        "type": "inject",
+        "z": "dba4f1ac499b6a24",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 440,
+        "y": 380,
+        "wires": [
+            [
+                "c6db2d856333cb76"
+            ]
+        ]
+    },
+    {
         "id": "7e416c8155f2dabb",
         "type": "exec",
         "z": "fd2c40c2d50b7447",
-        "command": "ls ~",
+        "command": "ls",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
