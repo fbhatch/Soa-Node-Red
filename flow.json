@@ -210,7 +210,7 @@
         "type": "json",
         "z": "24dfb8ef33f23156",
         "name": "ToObject",
-        "property": "payload",
+        "property": "parts",
         "action": "obj",
         "pretty": false,
         "x": 320,
@@ -451,64 +451,12 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 98,
-        "y": 396,
+        "x": 82,
+        "y": 378,
         "wires": [
             [
-                "cd1069464f7336d0"
-            ]
-        ]
-    },
-    {
-        "id": "cd1069464f7336d0",
-        "type": "json",
-        "z": "24dfb8ef33f23156",
-        "name": "ToObject",
-        "property": "payload",
-        "action": "obj",
-        "pretty": false,
-        "x": 276,
-        "y": 396,
-        "wires": [
-            [
-                "44bc089eef1b5090"
-            ]
-        ]
-    },
-    {
-        "id": "44bc089eef1b5090",
-        "type": "function",
-        "z": "24dfb8ef33f23156",
-        "name": "Armar Objeto Container",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 488,
-        "y": 396,
-        "wires": [
-            [
-                "03b910bdd3de6d0d"
-            ]
-        ]
-    },
-    {
-        "id": "03b910bdd3de6d0d",
-        "type": "mongodb-node",
-        "z": "24dfb8ef33f23156",
-        "mongodb": "bc46a78fce45a903",
-        "name": "Buscar Container",
-        "collection": "container",
-        "operation": "find",
-        "upsert": false,
-        "multi": false,
-        "x": 722,
-        "y": 396,
-        "wires": [
-            [
-                "e6525646cf543e54"
+                "cd1069464f7336d0",
+                "a61895cacfdb74f1"
             ]
         ]
     },
@@ -517,31 +465,31 @@
         "type": "switch",
         "z": "24dfb8ef33f23156",
         "name": "",
-        "property": "payload",
+        "property": "payload.exist",
         "propertyType": "msg",
         "rules": [
             {
                 "t": "eq",
-                "v": "",
-                "vt": "str"
+                "v": "true",
+                "vt": "jsonata"
             },
             {
                 "t": "eq",
-                "v": "",
-                "vt": "str"
+                "v": "false",
+                "vt": "jsonata"
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 914,
-        "y": 396,
+        "x": 1030,
+        "y": 342,
         "wires": [
             [
                 "9ce7e35ac06b4516"
             ],
             [
-                "7cb8ac070b92a3cf"
+                "8cb4e628b5779cee"
             ]
         ]
     },
@@ -551,7 +499,7 @@
         "z": "24dfb8ef33f23156",
         "name": "OK",
         "info": "",
-        "x": 914,
+        "x": 1174,
         "y": 288,
         "wires": []
     },
@@ -561,8 +509,8 @@
         "z": "24dfb8ef33f23156",
         "name": "ERROR",
         "info": "",
-        "x": 916,
-        "y": 450,
+        "x": 1146,
+        "y": 468,
         "wires": []
     },
     {
@@ -571,9 +519,11 @@
         "z": "24dfb8ef33f23156",
         "name": "",
         "statusCode": "",
-        "headers": {},
-        "x": 1220,
-        "y": 450,
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 1570,
+        "y": 486,
         "wires": []
     },
     {
@@ -584,10 +534,10 @@
         "rules": [
             {
                 "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
+                "p": "container",
+                "pt": "global",
+                "to": "payload.id",
+                "tot": "msg"
             }
         ],
         "action": "",
@@ -595,11 +545,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1080,
-        "y": 360,
+        "x": 1242,
+        "y": 342,
         "wires": [
             [
-                "7cb8ac070b92a3cf"
+                "a5c4cbaf2858b4f0"
             ]
         ]
     },
@@ -615,7 +565,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 714,
+        "x": 390,
         "y": 486,
         "wires": []
     },
@@ -628,7 +578,7 @@
             "03b910bdd3de6d0d"
         ],
         "uncaught": false,
-        "x": 724,
+        "x": 364,
         "y": 432,
         "wires": [
             [
@@ -659,7 +609,7 @@
         "type": "mqtt out",
         "z": "24dfb8ef33f23156",
         "name": "IniciarMediciones",
-        "topic": "",
+        "topic": "start",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -667,7 +617,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "8cc4005609a73937",
+        "broker": "4ce4539142712cae",
         "x": 306,
         "y": 594,
         "wires": []
@@ -706,7 +656,7 @@
         "type": "mqtt out",
         "z": "24dfb8ef33f23156",
         "name": "DetenerMediciones",
-        "topic": "",
+        "topic": "stop",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -714,7 +664,7 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "8cc4005609a73937",
+        "broker": "4ce4539142712cae",
         "x": 306,
         "y": 648,
         "wires": []
@@ -735,10 +685,10 @@
         "type": "mqtt in",
         "z": "24dfb8ef33f23156",
         "name": "Medicion Recibida",
-        "topic": "",
-        "qos": "2",
+        "topic": "medicion",
+        "qos": "0",
         "datatype": "auto-detect",
-        "broker": "8cc4005609a73937",
+        "broker": "4ce4539142712cae",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -1102,6 +1052,238 @@
         "x": 2082,
         "y": 882,
         "wires": []
+    },
+    {
+        "id": "fe8d374389e1c386",
+        "type": "inject",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"id\":\"648383b504e0120007621e2a\"}",
+        "payloadType": "json",
+        "x": 104,
+        "y": 288,
+        "wires": [
+            [
+                "cd1069464f7336d0",
+                "a61895cacfdb74f1"
+            ]
+        ]
+    },
+    {
+        "id": "cd1069464f7336d0",
+        "type": "json",
+        "z": "24dfb8ef33f23156",
+        "name": "ToObject",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 402,
+        "y": 342,
+        "wires": [
+            [
+                "5ccd805838b4083c"
+            ]
+        ]
+    },
+    {
+        "id": "9ec3753b6b01a90f",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "To object",
+        "func": "const containers = {\n    \"containers\": msg.payload\n}\nmsg.payload = containers\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 552,
+        "y": 396,
+        "wires": [
+            [
+                "5ccd805838b4083c"
+            ]
+        ]
+    },
+    {
+        "id": "5ccd805838b4083c",
+        "type": "join",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 716,
+        "y": 342,
+        "wires": [
+            [
+                "07bbd0c78e5f364a"
+            ]
+        ]
+    },
+    {
+        "id": "07bbd0c78e5f364a",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Exist",
+        "func": "const id = msg.payload.id\nconst containers = msg.payload.containers\nmsg.payload.exist = false\n\ncontainers.forEach(function(container) {\n    if(container._id == id){\n        msg.payload.exist = true\n       return msg \n    }\n        \n});\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 342,
+        "wires": [
+            [
+                "e6525646cf543e54"
+            ]
+        ]
+    },
+    {
+        "id": "ed9391613ee79225",
+        "type": "inject",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"radio\":20,\"tipo\":\"cilindro\"}",
+        "payloadType": "json",
+        "x": 626,
+        "y": 504,
+        "wires": [
+            [
+                "aa94ae6becbbc934"
+            ]
+        ]
+    },
+    {
+        "id": "aa94ae6becbbc934",
+        "type": "mongodb-node",
+        "z": "24dfb8ef33f23156",
+        "mongodb": "bc46a78fce45a903",
+        "name": "Buscar Containers",
+        "collection": "container",
+        "operation": "insert",
+        "upsert": false,
+        "multi": false,
+        "x": 828,
+        "y": 504,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "57234ce4491fd219",
+        "type": "mongodb-node",
+        "z": "24dfb8ef33f23156",
+        "mongodb": "bc46a78fce45a903",
+        "name": "Buscar Containers",
+        "collection": "container",
+        "operation": "find",
+        "upsert": false,
+        "multi": false,
+        "x": 342,
+        "y": 396,
+        "wires": [
+            [
+                "9ec3753b6b01a90f"
+            ]
+        ]
+    },
+    {
+        "id": "a61895cacfdb74f1",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Clear",
+        "func": "msg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 202,
+        "y": 432,
+        "wires": [
+            [
+                "57234ce4491fd219"
+            ]
+        ]
+    },
+    {
+        "id": "8cb4e628b5779cee",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Armo Respuesta",
+        "func": "msg.payload = {\n    status: 401,\n    msg: \"Container no encontrado\"\n}\n\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1152,
+        "y": 414,
+        "wires": [
+            [
+                "7cb8ac070b92a3cf"
+            ]
+        ]
+    },
+    {
+        "id": "a5c4cbaf2858b4f0",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Armo Respuesta",
+        "func": "const id = msg.payload.id\nmsg.payload = {\n    \"id\": id\n}\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1440,
+        "y": 342,
+        "wires": [
+            [
+                "7cb8ac070b92a3cf"
+            ]
+        ]
     },
     {
         "id": "215762e78937528b",
@@ -2259,11 +2441,11 @@
         "z": "dba4f1ac499b6a24",
         "mongodb": "bc46a78fce45a903",
         "name": "",
-        "collection": "hola",
+        "collection": "container",
         "operation": "find",
         "upsert": false,
         "multi": false,
-        "x": 700,
+        "x": 710,
         "y": 60,
         "wires": [
             [
