@@ -781,8 +781,327 @@
         "x": 444,
         "y": 810,
         "wires": [
+            [
+                "0320ed9773a6de91"
+            ]
+        ]
+    },
+    {
+        "id": "0320ed9773a6de91",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Calcular Nivel",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 622,
+        "y": 810,
+        "wires": [
+            [
+                "fdc753b613e58169"
+            ]
+        ]
+    },
+    {
+        "id": "fdc753b613e58169",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Calcular Volumen",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 810,
+        "wires": [
+            [
+                "b83509224d9540a4"
+            ]
+        ]
+    },
+    {
+        "id": "b83509224d9540a4",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Calcular Caudal",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 810,
+        "wires": [
+            [
+                "27e8cf82469bedcc"
+            ]
+        ]
+    },
+    {
+        "id": "27e8cf82469bedcc",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Calcular ETA",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1168,
+        "y": 810,
+        "wires": [
+            [
+                "9ae9a9ca5279617c"
+            ]
+        ]
+    },
+    {
+        "id": "9ae9a9ca5279617c",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Calcular Estado",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1340,
+        "y": 810,
+        "wires": [
+            [
+                "7b747cdb3ee7e528"
+            ]
+        ]
+    },
+    {
+        "id": "327b2e23c3c09f1b",
+        "type": "switch",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2074,
+        "y": 792,
+        "wires": [
+            [
+                "1fd8aa95148044ee"
+            ],
             []
         ]
+    },
+    {
+        "id": "1fd8aa95148044ee",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Alertar",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2192,
+        "y": 720,
+        "wires": [
+            [
+                "62f32c5fa338d754"
+            ]
+        ]
+    },
+    {
+        "id": "62f32c5fa338d754",
+        "type": "e-mail",
+        "z": "24dfb8ef33f23156",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "authtype": "BASIC",
+        "saslformat": true,
+        "token": "oauth2Response.access_token",
+        "secure": true,
+        "tls": true,
+        "name": "",
+        "dname": "",
+        "x": 2336,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "7b747cdb3ee7e528",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Armar Objeto Medicion",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1538,
+        "y": 810,
+        "wires": [
+            [
+                "15f381c645f32740"
+            ]
+        ]
+    },
+    {
+        "id": "15f381c645f32740",
+        "type": "mongodb-node",
+        "z": "24dfb8ef33f23156",
+        "mongodb": "bc46a78fce45a903",
+        "name": "Insert Medicion",
+        "collection": "container",
+        "operation": "insert",
+        "upsert": false,
+        "multi": false,
+        "x": 1738,
+        "y": 810,
+        "wires": [
+            [
+                "8dcf9577c1559022"
+            ]
+        ]
+    },
+    {
+        "id": "8dcf9577c1559022",
+        "type": "switch",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1904,
+        "y": 810,
+        "wires": [
+            [
+                "327b2e23c3c09f1b"
+            ],
+            [
+                "1c33c197edca5ed8"
+            ]
+        ]
+    },
+    {
+        "id": "0905e97f22e2172d",
+        "type": "comment",
+        "z": "24dfb8ef33f23156",
+        "name": "OK",
+        "info": "",
+        "x": 1904,
+        "y": 756,
+        "wires": []
+    },
+    {
+        "id": "f2423d3f5ab481e6",
+        "type": "comment",
+        "z": "24dfb8ef33f23156",
+        "name": "ERROR",
+        "info": "",
+        "x": 1906,
+        "y": 864,
+        "wires": []
+    },
+    {
+        "id": "fe3b17ba74ee5479",
+        "type": "debug",
+        "z": "24dfb8ef33f23156",
+        "name": "debug 17",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1716,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "23b499cf9e60973f",
+        "type": "catch",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "scope": [
+            "15f381c645f32740"
+        ],
+        "uncaught": false,
+        "x": 1726,
+        "y": 846,
+        "wires": [
+            [
+                "fe3b17ba74ee5479"
+            ]
+        ]
+    },
+    {
+        "id": "b9c380f9aa05b07a",
+        "type": "debug",
+        "z": "24dfb8ef33f23156",
+        "name": "debug 18",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1752,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "1c33c197edca5ed8",
+        "type": "debug",
+        "z": "24dfb8ef33f23156",
+        "name": "debug 19",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2082,
+        "y": 882,
+        "wires": []
     },
     {
         "id": "215762e78937528b",
