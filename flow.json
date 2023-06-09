@@ -1,18 +1,18 @@
 [
     {
+        "id": "24dfb8ef33f23156",
+        "type": "tab",
+        "label": "Arch",
+        "disabled": false,
+        "info": "Backend Auth",
+        "env": []
+    },
+    {
         "id": "a4016556e17b5c1d",
         "type": "tab",
         "label": "Config",
         "disabled": false,
         "info": "Backend config ",
-        "env": []
-    },
-    {
-        "id": "24dfb8ef33f23156",
-        "type": "tab",
-        "label": "Auth",
-        "disabled": false,
-        "info": "Backend Auth",
         "env": []
     },
     {
@@ -176,6 +176,613 @@
         "port": "27017",
         "db": "soa?authSource=admin",
         "name": ""
+    },
+    {
+        "id": "e6c11394069457fd",
+        "type": "http in",
+        "z": "24dfb8ef33f23156",
+        "name": "RegisterContainer",
+        "url": "/register",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "9ad881f75ad0f52d",
+                "ae6b938ccfe6d6c0"
+            ]
+        ]
+    },
+    {
+        "id": "36ab463705db8acb",
+        "type": "comment",
+        "z": "24dfb8ef33f23156",
+        "name": "Registrar Recipiente",
+        "info": "",
+        "x": 110,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "9ad881f75ad0f52d",
+        "type": "json",
+        "z": "24dfb8ef33f23156",
+        "name": "ToObject",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 320,
+        "y": 72,
+        "wires": [
+            [
+                "2d2831ac985c5f7a"
+            ]
+        ]
+    },
+    {
+        "id": "ae6b938ccfe6d6c0",
+        "type": "exec",
+        "z": "24dfb8ef33f23156",
+        "command": "",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Altura Promedio",
+        "x": 316,
+        "y": 198,
+        "wires": [
+            [
+                "2d2831ac985c5f7a"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "38e05ce339d88f49",
+        "type": "comment",
+        "z": "24dfb8ef33f23156",
+        "name": "Altura Inicial",
+        "info": "",
+        "x": 318,
+        "y": 234,
+        "wires": []
+    },
+    {
+        "id": "2d2831ac985c5f7a",
+        "type": "join",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 482,
+        "y": 126,
+        "wires": [
+            [
+                "20fe518a150b9149"
+            ]
+        ]
+    },
+    {
+        "id": "20fe518a150b9149",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Armar Objeto Container",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 674,
+        "y": 126,
+        "wires": [
+            [
+                "8704dffa14797e95"
+            ]
+        ]
+    },
+    {
+        "id": "8704dffa14797e95",
+        "type": "mongodb-node",
+        "z": "24dfb8ef33f23156",
+        "mongodb": "bc46a78fce45a903",
+        "name": "Insert Container",
+        "collection": "container",
+        "operation": "insert",
+        "upsert": false,
+        "multi": false,
+        "x": 886,
+        "y": 126,
+        "wires": [
+            [
+                "53a920cdc2ec4cec"
+            ]
+        ]
+    },
+    {
+        "id": "c42a10ba1889a578",
+        "type": "debug",
+        "z": "24dfb8ef33f23156",
+        "name": "debug 15",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 858,
+        "y": 234,
+        "wires": []
+    },
+    {
+        "id": "db604851792d6ccd",
+        "type": "catch",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "scope": [
+            "8704dffa14797e95"
+        ],
+        "uncaught": false,
+        "x": 868,
+        "y": 180,
+        "wires": [
+            [
+                "c42a10ba1889a578"
+            ]
+        ]
+    },
+    {
+        "id": "53a920cdc2ec4cec",
+        "type": "switch",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1048,
+        "y": 126,
+        "wires": [
+            [
+                "fbd1f6c00ab87645"
+            ],
+            [
+                "cf907aebfaff3150"
+            ]
+        ]
+    },
+    {
+        "id": "6c1e9fc54b8cc8ac",
+        "type": "comment",
+        "z": "24dfb8ef33f23156",
+        "name": "OK",
+        "info": "",
+        "x": 1048,
+        "y": 72,
+        "wires": []
+    },
+    {
+        "id": "b1c34224bd360905",
+        "type": "comment",
+        "z": "24dfb8ef33f23156",
+        "name": "ERROR",
+        "info": "",
+        "x": 1050,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "cf907aebfaff3150",
+        "type": "http response",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1354,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "fbd1f6c00ab87645",
+        "type": "change",
+        "z": "24dfb8ef33f23156",
+        "name": "Actual Container",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1214,
+        "y": 90,
+        "wires": [
+            [
+                "cf907aebfaff3150"
+            ]
+        ]
+    },
+    {
+        "id": "473ebab7249b8fb1",
+        "type": "http in",
+        "z": "24dfb8ef33f23156",
+        "name": "ChangeContainer",
+        "url": "/change",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 98,
+        "y": 396,
+        "wires": [
+            [
+                "cd1069464f7336d0"
+            ]
+        ]
+    },
+    {
+        "id": "cd1069464f7336d0",
+        "type": "json",
+        "z": "24dfb8ef33f23156",
+        "name": "ToObject",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 276,
+        "y": 396,
+        "wires": [
+            [
+                "44bc089eef1b5090"
+            ]
+        ]
+    },
+    {
+        "id": "44bc089eef1b5090",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Armar Objeto Container",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 488,
+        "y": 396,
+        "wires": [
+            [
+                "03b910bdd3de6d0d"
+            ]
+        ]
+    },
+    {
+        "id": "03b910bdd3de6d0d",
+        "type": "mongodb-node",
+        "z": "24dfb8ef33f23156",
+        "mongodb": "bc46a78fce45a903",
+        "name": "Buscar Container",
+        "collection": "container",
+        "operation": "find",
+        "upsert": false,
+        "multi": false,
+        "x": 722,
+        "y": 396,
+        "wires": [
+            [
+                "e6525646cf543e54"
+            ]
+        ]
+    },
+    {
+        "id": "e6525646cf543e54",
+        "type": "switch",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 914,
+        "y": 396,
+        "wires": [
+            [
+                "9ce7e35ac06b4516"
+            ],
+            [
+                "7cb8ac070b92a3cf"
+            ]
+        ]
+    },
+    {
+        "id": "0961b2f391fa17b3",
+        "type": "comment",
+        "z": "24dfb8ef33f23156",
+        "name": "OK",
+        "info": "",
+        "x": 914,
+        "y": 288,
+        "wires": []
+    },
+    {
+        "id": "e176445185853e48",
+        "type": "comment",
+        "z": "24dfb8ef33f23156",
+        "name": "ERROR",
+        "info": "",
+        "x": 916,
+        "y": 450,
+        "wires": []
+    },
+    {
+        "id": "7cb8ac070b92a3cf",
+        "type": "http response",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1220,
+        "y": 450,
+        "wires": []
+    },
+    {
+        "id": "9ce7e35ac06b4516",
+        "type": "change",
+        "z": "24dfb8ef33f23156",
+        "name": "Actual Container",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 360,
+        "wires": [
+            [
+                "7cb8ac070b92a3cf"
+            ]
+        ]
+    },
+    {
+        "id": "96c59519381f3f82",
+        "type": "debug",
+        "z": "24dfb8ef33f23156",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 714,
+        "y": 486,
+        "wires": []
+    },
+    {
+        "id": "8f95cadea4bfec62",
+        "type": "catch",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "scope": [
+            "03b910bdd3de6d0d"
+        ],
+        "uncaught": false,
+        "x": 724,
+        "y": 432,
+        "wires": [
+            [
+                "96c59519381f3f82"
+            ]
+        ]
+    },
+    {
+        "id": "dadbcb711da7a4cc",
+        "type": "http in",
+        "z": "24dfb8ef33f23156",
+        "name": "StartProcess",
+        "url": "/start",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 88,
+        "y": 594,
+        "wires": [
+            [
+                "fb58b1903405994a",
+                "732c148457f356ea"
+            ]
+        ]
+    },
+    {
+        "id": "fb58b1903405994a",
+        "type": "mqtt out",
+        "z": "24dfb8ef33f23156",
+        "name": "IniciarMediciones",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8cc4005609a73937",
+        "x": 306,
+        "y": 594,
+        "wires": []
+    },
+    {
+        "id": "7c7593ac6bba6c56",
+        "type": "http in",
+        "z": "24dfb8ef33f23156",
+        "name": "StopProcess",
+        "url": "/stop",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 88,
+        "y": 648,
+        "wires": [
+            [
+                "4a29f74f9f0f2fed",
+                "d7dc1a02e415a809"
+            ]
+        ]
+    },
+    {
+        "id": "732c148457f356ea",
+        "type": "http response",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 266,
+        "y": 558,
+        "wires": []
+    },
+    {
+        "id": "4a29f74f9f0f2fed",
+        "type": "mqtt out",
+        "z": "24dfb8ef33f23156",
+        "name": "DetenerMediciones",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8cc4005609a73937",
+        "x": 306,
+        "y": 648,
+        "wires": []
+    },
+    {
+        "id": "d7dc1a02e415a809",
+        "type": "http response",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 266,
+        "y": 684,
+        "wires": []
+    },
+    {
+        "id": "ee5e3c9456114308",
+        "type": "mqtt in",
+        "z": "24dfb8ef33f23156",
+        "name": "Medicion Recibida",
+        "topic": "",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "8cc4005609a73937",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 108,
+        "y": 810,
+        "wires": [
+            [
+                "c6df7f9f0175a190"
+            ]
+        ]
+    },
+    {
+        "id": "c6df7f9f0175a190",
+        "type": "json",
+        "z": "24dfb8ef33f23156",
+        "name": "ToObject",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 282,
+        "y": 810,
+        "wires": [
+            [
+                "ddd08b9f4a5de3ba"
+            ]
+        ]
+    },
+    {
+        "id": "ddd08b9f4a5de3ba",
+        "type": "function",
+        "z": "24dfb8ef33f23156",
+        "name": "Armar Objeto",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 444,
+        "y": 810,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "215762e78937528b",
@@ -613,90 +1220,6 @@
         "statusType": "auto",
         "x": 440,
         "y": 980,
-        "wires": []
-    },
-    {
-        "id": "9eb59bdd79987113",
-        "type": "link in",
-        "z": "24dfb8ef33f23156",
-        "name": "link in 1",
-        "links": [
-            "272943c8ddf8b294"
-        ],
-        "x": 155,
-        "y": 80,
-        "wires": [
-            [
-                "438ac039996df37b"
-            ]
-        ]
-    },
-    {
-        "id": "438ac039996df37b",
-        "type": "change",
-        "z": "24dfb8ef33f23156",
-        "name": "Setting Local Var",
-        "rules": [
-            {
-                "t": "set",
-                "p": "urlBase",
-                "pt": "msg",
-                "to": "data.urlBase",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 290,
-        "y": 80,
-        "wires": [
-            [
-                "9057028d3507a7ad"
-            ]
-        ]
-    },
-    {
-        "id": "9057028d3507a7ad",
-        "type": "http request",
-        "z": "24dfb8ef33f23156",
-        "name": "",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "http://192.168.192.1:1880/config",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 510,
-        "y": 80,
-        "wires": [
-            [
-                "8b2d519d750228ef"
-            ]
-        ]
-    },
-    {
-        "id": "8b2d519d750228ef",
-        "type": "debug",
-        "z": "24dfb8ef33f23156",
-        "name": "debug 1",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 680,
-        "y": 80,
         "wires": []
     },
     {
@@ -1548,7 +2071,7 @@
         "id": "7e416c8155f2dabb",
         "type": "exec",
         "z": "fd2c40c2d50b7447",
-        "command": "python /data/app.py",
+        "command": "python /data/distance.py",
         "addpay": "",
         "append": "",
         "useSpawn": "true",
@@ -1616,7 +2139,8 @@
         "z": "fd2c40c2d50b7447",
         "name": "",
         "scope": [
-            "7e416c8155f2dabb"
+            "7e416c8155f2dabb",
+            "270c18faf7fc7927"
         ],
         "uncaught": false,
         "x": 690,
@@ -1634,13 +2158,13 @@
         "name": "debug 11",
         "active": true,
         "tosidebar": true,
-        "console": false,
-        "tostatus": false,
+        "console": true,
+        "tostatus": true,
         "complete": "payload",
         "targetType": "msg",
-        "statusVal": "",
+        "statusVal": "payload",
         "statusType": "auto",
-        "x": 880,
+        "x": 890,
         "y": 480,
         "wires": []
     },
@@ -1665,14 +2189,14 @@
         "id": "270c18faf7fc7927",
         "type": "exec",
         "z": "fd2c40c2d50b7447",
-        "command": "pip install RPi.GPIO",
+        "command": "/data/distance",
         "addpay": "",
         "append": "",
         "useSpawn": "true",
         "timer": "",
         "winHide": false,
         "oldrc": false,
-        "name": "distance sensor py",
+        "name": "distance sensor C",
         "x": 570,
         "y": 640,
         "wires": [
