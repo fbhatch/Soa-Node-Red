@@ -8,6 +8,14 @@
         "env": []
     },
     {
+        "id": "6f2117e9081c52cf",
+        "type": "tab",
+        "label": "Change Actual Container",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "a4016556e17b5c1d",
         "type": "tab",
         "label": "Config",
@@ -439,150 +447,6 @@
         "wires": [
             [
                 "cf907aebfaff3150"
-            ]
-        ]
-    },
-    {
-        "id": "473ebab7249b8fb1",
-        "type": "http in",
-        "z": "24dfb8ef33f23156",
-        "name": "ChangeContainer",
-        "url": "/change",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 82,
-        "y": 378,
-        "wires": [
-            [
-                "cd1069464f7336d0",
-                "a61895cacfdb74f1"
-            ]
-        ]
-    },
-    {
-        "id": "e6525646cf543e54",
-        "type": "switch",
-        "z": "24dfb8ef33f23156",
-        "name": "",
-        "property": "payload.exist",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "true",
-                "vt": "jsonata"
-            },
-            {
-                "t": "eq",
-                "v": "false",
-                "vt": "jsonata"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 1030,
-        "y": 342,
-        "wires": [
-            [
-                "9ce7e35ac06b4516"
-            ],
-            [
-                "8cb4e628b5779cee"
-            ]
-        ]
-    },
-    {
-        "id": "0961b2f391fa17b3",
-        "type": "comment",
-        "z": "24dfb8ef33f23156",
-        "name": "OK",
-        "info": "",
-        "x": 1174,
-        "y": 288,
-        "wires": []
-    },
-    {
-        "id": "e176445185853e48",
-        "type": "comment",
-        "z": "24dfb8ef33f23156",
-        "name": "ERROR",
-        "info": "",
-        "x": 1146,
-        "y": 468,
-        "wires": []
-    },
-    {
-        "id": "7cb8ac070b92a3cf",
-        "type": "http response",
-        "z": "24dfb8ef33f23156",
-        "name": "",
-        "statusCode": "",
-        "headers": {
-            "content-type": "application/json"
-        },
-        "x": 1570,
-        "y": 486,
-        "wires": []
-    },
-    {
-        "id": "9ce7e35ac06b4516",
-        "type": "change",
-        "z": "24dfb8ef33f23156",
-        "name": "Actual Container",
-        "rules": [
-            {
-                "t": "set",
-                "p": "container",
-                "pt": "global",
-                "to": "payload.id",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1242,
-        "y": 342,
-        "wires": [
-            [
-                "a5c4cbaf2858b4f0"
-            ]
-        ]
-    },
-    {
-        "id": "96c59519381f3f82",
-        "type": "debug",
-        "z": "24dfb8ef33f23156",
-        "name": "debug 16",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 390,
-        "y": 486,
-        "wires": []
-    },
-    {
-        "id": "8f95cadea4bfec62",
-        "type": "catch",
-        "z": "24dfb8ef33f23156",
-        "name": "",
-        "scope": [
-            "03b910bdd3de6d0d"
-        ],
-        "uncaught": false,
-        "x": 364,
-        "y": 432,
-        "wires": [
-            [
-                "96c59519381f3f82"
             ]
         ]
     },
@@ -1054,28 +918,16 @@
         "wires": []
     },
     {
-        "id": "fe8d374389e1c386",
-        "type": "inject",
-        "z": "24dfb8ef33f23156",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"id\":\"648383b504e0120007621e2a\"}",
-        "payloadType": "json",
-        "x": 104,
-        "y": 288,
+        "id": "473ebab7249b8fb1",
+        "type": "http in",
+        "z": "6f2117e9081c52cf",
+        "name": "ChangeContainer",
+        "url": "/change",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 82,
+        "y": 72,
         "wires": [
             [
                 "cd1069464f7336d0",
@@ -1084,15 +936,121 @@
         ]
     },
     {
+        "id": "e6525646cf543e54",
+        "type": "switch",
+        "z": "6f2117e9081c52cf",
+        "name": "",
+        "property": "payload.exist",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "true",
+                "vt": "jsonata"
+            },
+            {
+                "t": "eq",
+                "v": "false",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1058,
+        "y": 72,
+        "wires": [
+            [
+                "9ce7e35ac06b4516"
+            ],
+            [
+                "8cb4e628b5779cee"
+            ]
+        ]
+    },
+    {
+        "id": "7cb8ac070b92a3cf",
+        "type": "http response",
+        "z": "6f2117e9081c52cf",
+        "name": "",
+        "statusCode": "",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 1706,
+        "y": 108,
+        "wires": []
+    },
+    {
+        "id": "9ce7e35ac06b4516",
+        "type": "change",
+        "z": "6f2117e9081c52cf",
+        "name": "Actual Container",
+        "rules": [
+            {
+                "t": "set",
+                "p": "container",
+                "pt": "global",
+                "to": "payload.id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1268,
+        "y": 54,
+        "wires": [
+            [
+                "a5c4cbaf2858b4f0"
+            ]
+        ]
+    },
+    {
+        "id": "96c59519381f3f82",
+        "type": "debug",
+        "z": "6f2117e9081c52cf",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 618,
+        "y": 162,
+        "wires": []
+    },
+    {
+        "id": "8f95cadea4bfec62",
+        "type": "catch",
+        "z": "6f2117e9081c52cf",
+        "name": "",
+        "scope": [
+            "03b910bdd3de6d0d"
+        ],
+        "uncaught": false,
+        "x": 446,
+        "y": 162,
+        "wires": [
+            [
+                "96c59519381f3f82"
+            ]
+        ]
+    },
+    {
         "id": "cd1069464f7336d0",
         "type": "json",
-        "z": "24dfb8ef33f23156",
+        "z": "6f2117e9081c52cf",
         "name": "ToObject",
         "property": "payload",
         "action": "obj",
         "pretty": false,
-        "x": 402,
-        "y": 342,
+        "x": 438,
+        "y": 72,
         "wires": [
             [
                 "5ccd805838b4083c"
@@ -1102,7 +1060,7 @@
     {
         "id": "9ec3753b6b01a90f",
         "type": "function",
-        "z": "24dfb8ef33f23156",
+        "z": "6f2117e9081c52cf",
         "name": "To object",
         "func": "const containers = {\n    \"containers\": msg.payload\n}\nmsg.payload = containers\nreturn msg;",
         "outputs": 1,
@@ -1110,8 +1068,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 552,
-        "y": 396,
+        "x": 618,
+        "y": 126,
         "wires": [
             [
                 "5ccd805838b4083c"
@@ -1121,7 +1079,7 @@
     {
         "id": "5ccd805838b4083c",
         "type": "join",
-        "z": "24dfb8ef33f23156",
+        "z": "6f2117e9081c52cf",
         "name": "",
         "mode": "custom",
         "build": "merged",
@@ -1138,8 +1096,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 716,
-        "y": 342,
+        "x": 796,
+        "y": 72,
         "wires": [
             [
                 "07bbd0c78e5f364a"
@@ -1149,7 +1107,7 @@
     {
         "id": "07bbd0c78e5f364a",
         "type": "function",
-        "z": "24dfb8ef33f23156",
+        "z": "6f2117e9081c52cf",
         "name": "Exist",
         "func": "const id = msg.payload.id\nconst containers = msg.payload.containers\nmsg.payload.exist = false\n\ncontainers.forEach(function(container) {\n    if(container._id == id){\n        msg.payload.exist = true\n       return msg \n    }\n        \n});\n\nreturn msg",
         "outputs": 1,
@@ -1157,8 +1115,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 860,
-        "y": 342,
+        "x": 932,
+        "y": 72,
         "wires": [
             [
                 "e6525646cf543e54"
@@ -1166,9 +1124,84 @@
         ]
     },
     {
-        "id": "ed9391613ee79225",
+        "id": "57234ce4491fd219",
+        "type": "mongodb-node",
+        "z": "6f2117e9081c52cf",
+        "mongodb": "bc46a78fce45a903",
+        "name": "Buscar Containers",
+        "collection": "container",
+        "operation": "find",
+        "upsert": false,
+        "multi": false,
+        "x": 432,
+        "y": 126,
+        "wires": [
+            [
+                "9ec3753b6b01a90f"
+            ]
+        ]
+    },
+    {
+        "id": "a61895cacfdb74f1",
+        "type": "function",
+        "z": "6f2117e9081c52cf",
+        "name": "Clear",
+        "func": "msg.payload = {}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 256,
+        "y": 126,
+        "wires": [
+            [
+                "57234ce4491fd219"
+            ]
+        ]
+    },
+    {
+        "id": "8cb4e628b5779cee",
+        "type": "function",
+        "z": "6f2117e9081c52cf",
+        "name": "Armo Respuesta Error",
+        "func": "msg.payload = {\n    msg: `Container no encontrado`\n}\nmsg.statusCode = 404\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1286,
+        "y": 108,
+        "wires": [
+            [
+                "7cb8ac070b92a3cf"
+            ]
+        ]
+    },
+    {
+        "id": "a5c4cbaf2858b4f0",
+        "type": "function",
+        "z": "6f2117e9081c52cf",
+        "name": "Armo Respuesta",
+        "func": "const id = msg.payload.id\nmsg.payload = {\n    \"id\": id\n}\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1494,
+        "y": 54,
+        "wires": [
+            [
+                "7cb8ac070b92a3cf"
+            ]
+        ]
+    },
+    {
+        "id": "0d27d53123a1bbed",
         "type": "inject",
-        "z": "24dfb8ef33f23156",
+        "z": "6f2117e9081c52cf",
         "name": "",
         "props": [
             {
@@ -1184,106 +1217,105 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "{\"radio\":20,\"tipo\":\"cilindro\"}",
-        "payloadType": "json",
-        "x": 626,
-        "y": 504,
+        "payload": "container",
+        "payloadType": "global",
+        "x": 172,
+        "y": 288,
         "wires": [
             [
-                "aa94ae6becbbc934"
+                "3032be3270e5c760"
             ]
         ]
     },
     {
-        "id": "aa94ae6becbbc934",
-        "type": "mongodb-node",
-        "z": "24dfb8ef33f23156",
-        "mongodb": "bc46a78fce45a903",
-        "name": "Buscar Containers",
-        "collection": "container",
-        "operation": "insert",
-        "upsert": false,
-        "multi": false,
-        "x": 828,
-        "y": 504,
-        "wires": [
-            []
-        ]
+        "id": "3032be3270e5c760",
+        "type": "debug",
+        "z": "6f2117e9081c52cf",
+        "name": "debug 20",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 374,
+        "y": 288,
+        "wires": []
     },
     {
-        "id": "57234ce4491fd219",
+        "id": "e2c9a00c11b047fc",
         "type": "mongodb-node",
-        "z": "24dfb8ef33f23156",
+        "z": "6f2117e9081c52cf",
         "mongodb": "bc46a78fce45a903",
-        "name": "Buscar Containers",
+        "name": "Buscar Todos",
         "collection": "container",
         "operation": "find",
         "upsert": false,
         "multi": false,
-        "x": 342,
-        "y": 396,
+        "x": 388,
+        "y": 324,
         "wires": [
             [
-                "9ec3753b6b01a90f"
+                "625feb44002a34a5"
             ]
         ]
     },
     {
-        "id": "a61895cacfdb74f1",
-        "type": "function",
-        "z": "24dfb8ef33f23156",
-        "name": "Clear",
-        "func": "msg.payload = {}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 202,
-        "y": 432,
+        "id": "625feb44002a34a5",
+        "type": "debug",
+        "z": "6f2117e9081c52cf",
+        "name": "debug 21",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 566,
+        "y": 324,
+        "wires": []
+    },
+    {
+        "id": "43504d1d4acde086",
+        "type": "inject",
+        "z": "6f2117e9081c52cf",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 152,
+        "y": 324,
         "wires": [
             [
-                "57234ce4491fd219"
+                "e2c9a00c11b047fc"
             ]
         ]
     },
     {
-        "id": "8cb4e628b5779cee",
-        "type": "function",
-        "z": "24dfb8ef33f23156",
-        "name": "Armo Respuesta",
-        "func": "msg.payload = {\n    status: 401,\n    msg: \"Container no encontrado\"\n}\n\n\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1152,
-        "y": 414,
-        "wires": [
-            [
-                "7cb8ac070b92a3cf"
-            ]
-        ]
-    },
-    {
-        "id": "a5c4cbaf2858b4f0",
-        "type": "function",
-        "z": "24dfb8ef33f23156",
-        "name": "Armo Respuesta",
-        "func": "const id = msg.payload.id\nmsg.payload = {\n    \"id\": id\n}\n\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1440,
-        "y": 342,
-        "wires": [
-            [
-                "7cb8ac070b92a3cf"
-            ]
-        ]
+        "id": "6d1171f8a6947e64",
+        "type": "comment",
+        "z": "6f2117e9081c52cf",
+        "name": "Test",
+        "info": "",
+        "x": 112,
+        "y": 252,
+        "wires": []
     },
     {
         "id": "215762e78937528b",
