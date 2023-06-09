@@ -1548,15 +1548,15 @@
         "id": "7e416c8155f2dabb",
         "type": "exec",
         "z": "fd2c40c2d50b7447",
-        "command": "ls",
+        "command": "python /data/app.py",
         "addpay": "",
         "append": "",
-        "useSpawn": "false",
+        "useSpawn": "true",
         "timer": "",
         "winHide": false,
         "oldrc": false,
-        "name": "distance sensor",
-        "x": 720,
+        "name": "distance sensor py",
+        "x": 730,
         "y": 300,
         "wires": [
             [
@@ -1653,11 +1653,83 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 1000,
         "y": 300,
+        "wires": []
+    },
+    {
+        "id": "270c18faf7fc7927",
+        "type": "exec",
+        "z": "fd2c40c2d50b7447",
+        "command": "pip install RPi.GPIO",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "distance sensor py",
+        "x": 570,
+        "y": 640,
+        "wires": [
+            [
+                "67e2dc846cff258d"
+            ],
+            [
+                "67e2dc846cff258d"
+            ],
+            [
+                "67e2dc846cff258d"
+            ]
+        ]
+    },
+    {
+        "id": "79e7d215d2d9e938",
+        "type": "inject",
+        "z": "fd2c40c2d50b7447",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 280,
+        "y": 580,
+        "wires": [
+            [
+                "270c18faf7fc7927"
+            ]
+        ]
+    },
+    {
+        "id": "67e2dc846cff258d",
+        "type": "debug",
+        "z": "fd2c40c2d50b7447",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 640,
         "wires": []
     }
 ]
