@@ -42,7 +42,7 @@
     {
         "id": "4e4be63df05180bc",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Leds & Cervo",
         "disabled": false,
         "info": "",
         "env": []
@@ -91,6 +91,14 @@
         "id": "b975189eeafb751a",
         "type": "tab",
         "label": "UI",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9a483f954afe403c",
+        "type": "tab",
+        "label": "Flow 4",
         "disabled": false,
         "info": "",
         "env": []
@@ -4301,6 +4309,206 @@
         "info": "docker exec -it mosquitto-mosquitto-1 sh\nmosquitto_pub -t led-rgb -m [0,0,100] -h localhost",
         "x": 210,
         "y": 702,
+        "wires": []
+    },
+    {
+        "id": "eb14ac48659a4e60",
+        "type": "inject",
+        "z": "4e4be63df05180bc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 338,
+        "y": 900,
+        "wires": [
+            [
+                "7ff20f40071be735"
+            ]
+        ]
+    },
+    {
+        "id": "279bf7d9fb815258",
+        "type": "inject",
+        "z": "4e4be63df05180bc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 338,
+        "y": 954,
+        "wires": [
+            [
+                "7ff20f40071be735"
+            ]
+        ]
+    },
+    {
+        "id": "f80382047002c2ec",
+        "type": "inject",
+        "z": "4e4be63df05180bc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "7",
+        "payloadType": "num",
+        "x": 338,
+        "y": 1008,
+        "wires": [
+            [
+                "7ff20f40071be735"
+            ]
+        ]
+    },
+    {
+        "id": "c2e8f83aed05c525",
+        "type": "inject",
+        "z": "4e4be63df05180bc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "10",
+        "payloadType": "num",
+        "x": 338,
+        "y": 1062,
+        "wires": [
+            [
+                "7ff20f40071be735"
+            ]
+        ]
+    },
+    {
+        "id": "7ff20f40071be735",
+        "type": "pi-gpiod out",
+        "z": "4e4be63df05180bc",
+        "name": "servo",
+        "host": "192.168.192.1",
+        "port": "8888",
+        "pin": "17",
+        "set": false,
+        "level": "1",
+        "out": "pwm",
+        "sermin": "1000",
+        "sermax": "2000",
+        "freq": "50",
+        "x": 590,
+        "y": 990,
+        "wires": []
+    },
+    {
+        "id": "78b7b6ad10bf5038",
+        "type": "inject",
+        "z": "4e4be63df05180bc",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 320,
+        "y": 1188,
+        "wires": [
+            [
+                "75c0cef38d348557"
+            ]
+        ]
+    },
+    {
+        "id": "75c0cef38d348557",
+        "type": "function",
+        "z": "4e4be63df05180bc",
+        "name": "function 14",
+        "func": "msg.payload = Math.random() * 10\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 502,
+        "y": 1188,
+        "wires": [
+            [
+                "7ff20f40071be735",
+                "7de7a5799c495cf1"
+            ]
+        ]
+    },
+    {
+        "id": "7de7a5799c495cf1",
+        "type": "debug",
+        "z": "4e4be63df05180bc",
+        "name": "debug 58",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 678,
+        "y": 1206,
         "wires": []
     },
     {
