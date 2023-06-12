@@ -8,6 +8,14 @@
         "env": []
     },
     {
+        "id": "ae588d9b3fae37a1",
+        "type": "tab",
+        "label": "MQTT EDU",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "6f2117e9081c52cf",
         "type": "tab",
         "label": "Change Actual Container",
@@ -48,6 +56,14 @@
         "env": []
     },
     {
+        "id": "e2c506af3574a58c",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "dba4f1ac499b6a24",
         "type": "tab",
         "label": "Register",
@@ -72,6 +88,14 @@
         "env": []
     },
     {
+        "id": "b975189eeafb751a",
+        "type": "tab",
+        "label": "UI",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "4ce4539142712cae",
         "type": "mqtt-broker",
         "name": "server-mqtt",
@@ -83,7 +107,7 @@
         "protocolVersion": "5",
         "keepalive": "60",
         "cleansession": true,
-        "birthTopic": "",
+        "birthTopic": "medicion",
         "birthQos": "0",
         "birthPayload": "",
         "birthMsg": {},
@@ -208,6 +232,133 @@
         "port": "27017",
         "db": "soa?authSource=admin",
         "name": ""
+    },
+    {
+        "id": "c4d89469b20c0f9e",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "17d19835de663e2f",
+        "type": "ui_group",
+        "name": "Sensores",
+        "tab": "358456880232ef9c",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "358456880232ef9c",
+        "type": "ui_tab",
+        "name": "Menu principal",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "57a3c8c6be82297f",
+        "type": "ui_group",
+        "name": "Calculos",
+        "tab": "358456880232ef9c",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "e6c11394069457fd",
@@ -1041,6 +1192,1446 @@
         ]
     },
     {
+        "id": "3abdef68e06537c7",
+        "type": "Bme280",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "bus": "1",
+        "address": "0x76",
+        "topic": "bme280",
+        "extra": false,
+        "x": 480,
+        "y": 108,
+        "wires": [
+            [
+                "6cf3e80b50bb86ff"
+            ]
+        ]
+    },
+    {
+        "id": "637860d59ab03272",
+        "type": "comment",
+        "z": "24dfb8ef33f23156",
+        "name": "Temperatura Inicial",
+        "info": "",
+        "x": 486,
+        "y": 72,
+        "wires": []
+    },
+    {
+        "id": "e179433c1daa3216",
+        "type": "inject",
+        "z": "24dfb8ef33f23156",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 108,
+        "wires": [
+            [
+                "3abdef68e06537c7"
+            ]
+        ]
+    },
+    {
+        "id": "6cf3e80b50bb86ff",
+        "type": "debug",
+        "z": "24dfb8ef33f23156",
+        "name": "debug 51",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 108,
+        "wires": []
+    },
+    {
+        "id": "992c68eaf7bee79d",
+        "type": "mqtt in",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "topic": "Mediciones",
+        "qos": "2",
+        "datatype": "utf8",
+        "broker": "8cc4005609a73937",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 540,
+        "wires": [
+            [
+                "7990cab44ba77539"
+            ]
+        ]
+    },
+    {
+        "id": "69429cdb3d5cde43",
+        "type": "debug",
+        "z": "ae588d9b3fae37a1",
+        "name": "debug 44",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1218,
+        "y": 270,
+        "wires": []
+    },
+    {
+        "id": "7990cab44ba77539",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "to JSON",
+        "func": "let s = msg.payload.replace(/\\\\n/g, \"\\\\n\")\n    .replace(/\\\\'/g, \"\\\\'\")\n    .replace(/\\\\\"/g, '\\\\\"')\n    .replace(/\\\\&/g, \"\\\\&\")\n    .replace(/\\\\r/g, \"\\\\r\")\n    .replace(/\\\\t/g, \"\\\\t\")\n    .replace(/\\\\b/g, \"\\\\b\")\n    .replace(/\\\\f/g, \"\\\\f\");\n// Remove non-printable and other non-valid JSON characters\ns = s.replace(/[\\u0000-\\u0019]+/g, \"\");\nvar o = JSON.parse(s);\n\nmsg.payload = o;\n\n//let data = JSON.parse(msg.payload);\n//console.log(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 258,
+        "y": 540,
+        "wires": [
+            [
+                "16f30e7171618337"
+            ]
+        ]
+    },
+    {
+        "id": "398fd7c154a5c79a",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "calcular nivel",
+        "func": "const contenedor = global.get('container')\nif(contenedor.primera){\n    msg.payload.nivel = 0\n    return msg\n}\nmsg.payload.nivel = contenedor.altura - msg.payload.distancia\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 592,
+        "y": 576,
+        "wires": [
+            [
+                "01d9d2d50b595f38",
+                "117224e504b86535"
+            ]
+        ]
+    },
+    {
+        "id": "272c41bf8bb54b83",
+        "type": "http response",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 292,
+        "y": 36,
+        "wires": []
+    },
+    {
+        "id": "65c9394d079a0565",
+        "type": "mqtt in",
+        "z": "ae588d9b3fae37a1",
+        "name": "Medicion Recibida",
+        "topic": "Mediciones",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "4ce4539142712cae",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 126,
+        "y": 144,
+        "wires": [
+            [
+                "79b8cf6050615421",
+                "59311a42c5d41eac"
+            ]
+        ]
+    },
+    {
+        "id": "79b8cf6050615421",
+        "type": "json",
+        "z": "ae588d9b3fae37a1",
+        "name": "ToObject",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 300,
+        "y": 144,
+        "wires": [
+            [
+                "a85e73e8f916ae3b"
+            ]
+        ]
+    },
+    {
+        "id": "a85e73e8f916ae3b",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Armar Objeto",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 462,
+        "y": 144,
+        "wires": [
+            [
+                "4964f264b49a655e"
+            ]
+        ]
+    },
+    {
+        "id": "4964f264b49a655e",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Calcular Nivel",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 144,
+        "wires": [
+            [
+                "117d7ddcdafa18e5"
+            ]
+        ]
+    },
+    {
+        "id": "117d7ddcdafa18e5",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Calcular Volumen",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 828,
+        "y": 144,
+        "wires": [
+            [
+                "d1dec5cbc5a17379"
+            ]
+        ]
+    },
+    {
+        "id": "d1dec5cbc5a17379",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Calcular Caudal",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1018,
+        "y": 144,
+        "wires": [
+            [
+                "6228e6de638598d7"
+            ]
+        ]
+    },
+    {
+        "id": "6228e6de638598d7",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Calcular ETA",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1186,
+        "y": 144,
+        "wires": [
+            [
+                "6c39975b507e948a"
+            ]
+        ]
+    },
+    {
+        "id": "6c39975b507e948a",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Calcular Estado",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1358,
+        "y": 144,
+        "wires": [
+            [
+                "8542df6e2d053be6"
+            ]
+        ]
+    },
+    {
+        "id": "d4e2576eafd15880",
+        "type": "switch",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2092,
+        "y": 126,
+        "wires": [
+            [
+                "a0b59973484a7cbe"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a0b59973484a7cbe",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Alertar",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2210,
+        "y": 54,
+        "wires": [
+            [
+                "d44ff31fabb2a1eb"
+            ]
+        ]
+    },
+    {
+        "id": "d44ff31fabb2a1eb",
+        "type": "e-mail",
+        "z": "ae588d9b3fae37a1",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "authtype": "BASIC",
+        "saslformat": true,
+        "token": "oauth2Response.access_token",
+        "secure": true,
+        "tls": true,
+        "name": "",
+        "dname": "",
+        "x": 2354,
+        "y": 54,
+        "wires": []
+    },
+    {
+        "id": "8542df6e2d053be6",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Armar Objeto Medicion",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1556,
+        "y": 144,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "782cca0314155811",
+        "type": "switch",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1922,
+        "y": 144,
+        "wires": [
+            [
+                "d4e2576eafd15880"
+            ],
+            [
+                "6f275397062b7218"
+            ]
+        ]
+    },
+    {
+        "id": "893234419161d13c",
+        "type": "comment",
+        "z": "ae588d9b3fae37a1",
+        "name": "OK",
+        "info": "",
+        "x": 1922,
+        "y": 90,
+        "wires": []
+    },
+    {
+        "id": "d8bd1abf5ea19c9e",
+        "type": "comment",
+        "z": "ae588d9b3fae37a1",
+        "name": "ERROR",
+        "info": "",
+        "x": 1924,
+        "y": 198,
+        "wires": []
+    },
+    {
+        "id": "537759f0c8b981ca",
+        "type": "debug",
+        "z": "ae588d9b3fae37a1",
+        "name": "debug 45",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1794,
+        "y": 234,
+        "wires": []
+    },
+    {
+        "id": "26a844e560d8c44a",
+        "type": "catch",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "scope": [
+            "88be844be19fc97d"
+        ],
+        "uncaught": false,
+        "x": 1648,
+        "y": 234,
+        "wires": [
+            [
+                "537759f0c8b981ca"
+            ]
+        ]
+    },
+    {
+        "id": "6f275397062b7218",
+        "type": "debug",
+        "z": "ae588d9b3fae37a1",
+        "name": "debug 46",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2100,
+        "y": 216,
+        "wires": []
+    },
+    {
+        "id": "59311a42c5d41eac",
+        "type": "debug",
+        "z": "ae588d9b3fae37a1",
+        "name": "debug 47",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 198,
+        "wires": []
+    },
+    {
+        "id": "85f1641234890e06",
+        "type": "comment",
+        "z": "ae588d9b3fae37a1",
+        "name": "TODO",
+        "info": "SACAR TODA LA INFO DEL BALDE",
+        "x": 184,
+        "y": 414,
+        "wires": []
+    },
+    {
+        "id": "264542925e9f50a5",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Calcular Volumen",
+        "func": "//Calculate Volume\nconst getVolume = (container, level, temperature) => {\n    const beta = 0.00021\n    let volume\n    let temperatureI\n    if (container.measurements.length > 0)\n        temperatureI = container.lastMeasurement.temperature\n    else\n        temperatureI = container.roomTemperature\n\n    if (container.geometry === \"Cylinder\") {\n        //TODO:\n        //Check\n        volume = Math.PI * (container.radius ** 2) * level * (1 + beta * (temperature - temperatureI))\n    } else if (container.geometry === \"Cube\") {\n        volume = container.sides[0] * container.sides[1] * level * (1 + beta * (temperature - temperatureI))\n    }\n    return volume\n}\nmsg.payload.volume = getVolume(\"Cylinder\", msg.payload.nivel, msg.payload.temperatura);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1044,
+        "y": 270,
+        "wires": [
+            [
+                "69429cdb3d5cde43"
+            ]
+        ]
+    },
+    {
+        "id": "c5b0ab69eeb2efcd",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Update",
+        "func": "var newMsg = {\n    'collection': 'container',\n    'operation': 'update',\n    'query': {\n        _id: \"6483d3ff04e0120007621e30\"\n    },\n    'payload': { \n        $push: {   \n            \"mediciones\" : 10 \n        },\n        $set: {\n            \"ultimaMedicion\": 10\n        },\n    }\n};\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 318,
+        "y": 900,
+        "wires": [
+            [
+                "a7520e3f89e34389"
+            ]
+        ]
+    },
+    {
+        "id": "a7520e3f89e34389",
+        "type": "mongodb-node",
+        "z": "ae588d9b3fae37a1",
+        "mongodb": "ce26f499c263739a",
+        "name": "Update",
+        "collection": "container",
+        "operation": "update",
+        "upsert": false,
+        "multi": false,
+        "x": 480,
+        "y": 900,
+        "wires": [
+            [
+                "fb1491587a52ca95"
+            ]
+        ]
+    },
+    {
+        "id": "117224e504b86535",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Calcular Volumen",
+        "func": "const contenedor = global.get('container')\n\nconst beta = 0.00021\nlet volume\nlet temperaturaI\n\nif(contenedor.primera){\n    msg.payload.volumen = 0\n    return msg\n}  \nelse {\n    temperaturaI = contenedor.ultima.temperatura\n    if(contenedor.tipo === \"tacho\"){\n        volume = Math.PI * (contenedor.radio ** 2) * msg.payload.nivel * (1 + beta * (msg.payload.temperatura - temperaturaI)) \n    }else{\n        //TODO Cubo\n    }\n}\n\nmsg.payload.volumen = volume\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 792,
+        "y": 576,
+        "wires": [
+            [
+                "c010df3fd2223678"
+            ]
+        ]
+    },
+    {
+        "id": "261cccdf8c6d40f6",
+        "type": "switch",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "property": "container.primera",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "true",
+                "vt": "jsonata"
+            },
+            {
+                "t": "eq",
+                "v": "false",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1318,
+        "y": 864,
+        "wires": [
+            [
+                "8fbcc098ba30ddf7"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2228421e38155c5d",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Update",
+        "func": "const contenedor = global.get('container')\n\nvar newMsg = {\n    'collection': 'container',\n    'operation': 'update',\n    'query': {\n        _id: contenedor._id\n    },\n    'payload': { \n        \n        $set: {\n            \"altura\": msg.payload.distancia,\n            \"temperatura\": msg.payload.temperatura\n        },\n    }\n};\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 858,
+        "y": 270,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "292a542f4611910f",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Update",
+        "func": "var newMsg = {\n    'collection': 'container',\n    'operation': 'update',\n    'query': {\n        _id: \"6483d3ff04e0120007621e30\"\n    },\n    'payload': { \n        $push: {   \n            \"mediciones\" : msg.payload.medicion \n        },\n        $set: {\n            \"ultimaMedicion\": msg.payload.medicion \n        },\n    }\n};\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1674,
+        "y": 306,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4778590decbdddbe",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Armar objeto",
+        "func": "const medicion = {\n    \"nivel\": msg.payload.nivel,\n    \"volumen\": msg.payload.volumen,\n    \"ETA\": msg.payload.eta,\n    \"caudal\": msg.payload.caudal,\n    \"estado\": msg.payload.estado\n}\n\nmsg.payload.medicion = medicion\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1480,
+        "y": 288,
+        "wires": [
+            [
+                "292a542f4611910f"
+            ]
+        ]
+    },
+    {
+        "id": "13f137f95ca6c051",
+        "type": "change",
+        "z": "ae588d9b3fae37a1",
+        "name": "Ultima Medicion",
+        "rules": [
+            {
+                "t": "set",
+                "p": "container.medicion",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "container.primera",
+                "pt": "global",
+                "to": "false",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1492,
+        "y": 234,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "01d9d2d50b595f38",
+        "type": "link out",
+        "z": "ae588d9b3fae37a1",
+        "name": "Nivel",
+        "mode": "link",
+        "links": [
+            "fcd2dd966646f325"
+        ],
+        "x": 591,
+        "y": 648,
+        "wires": []
+    },
+    {
+        "id": "8fbcc098ba30ddf7",
+        "type": "change",
+        "z": "ae588d9b3fae37a1",
+        "name": "Primera",
+        "rules": [
+            {
+                "t": "set",
+                "p": "container.primera",
+                "pt": "global",
+                "to": "false",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1518,
+        "y": 882,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0c1b5f32edbb270",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Update",
+        "func": "",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 864,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c010df3fd2223678",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Calcular Caudal",
+        "func": "const contenedor = global.get('container')\nlet volumeI\nlet currentTime = Date.now()\nlet timeI\nlet caudal = 0\n\nif(contenedor.primera){\n    msg.payload.caudal = 0\n    return msg\n}  \nelse {\n    volumeI = contenedor.ultima.volumen\n    timeI = contenedor.ultima.tiempo\n    caudal = Math.abs(msg.payload.volumen - volumeI) / Math.abs(currentTime - timeI) / 1000;\n}\n\nmsg.payload.caudal = caudal\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 576,
+        "wires": [
+            [
+                "e935e1206b5696f8"
+            ]
+        ]
+    },
+    {
+        "id": "e935e1206b5696f8",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Calcular ETA",
+        "func": "const contenedor = global.get('container')\n\nlet eta = 0;\n\nif(contenedor.primera){\n    msg.payload.eta = 0\n    return msg\n}  \nelse {\n    const beta = 0.00021\n    let volume\n    let temperaturaI\n    temperaturaI = contenedor.ultima.temperatura\n    if (contenedor.tipo === \"cilindro\") {\n        volume = Math.PI * (contenedor.radio ** 2) * contenedor.altura * (1 + beta * (msg.payload.temperatura - temperaturaI))\n    } else {\n        //TODO Cubo\n    }\n    if(msg.payload.caudal != 0){\n        eta = volume / msg.payload.caudal;\n    }else{\n        eta = 0\n    }\n\n}\n\nmsg.payload.eta = eta\nreturn msg;\n\n\n\n\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1172,
+        "y": 576,
+        "wires": [
+            [
+                "be6dc0ec1b17542c"
+            ]
+        ]
+    },
+    {
+        "id": "be6dc0ec1b17542c",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Calcular Estado",
+        "func": "const contenedor = global.get('container')\n\nlet levelMax = contenedor.altura\nlet low = levelMax / 4\nlet lowLow = levelMax / 8\nlet high = levelMax * 3 / 4\nlet highHigh = levelMax * 7 / 8\nlet estado\n\nif(contenedor.primera){\n    msg.payload.estado = 0\n    return msg\n}  \nelse {\n    let lastState = contenedor.ultima.estado\n    const level = msg.payload.nivel\n    //Normal, no alert\n    if (level >= low && level <= high)\n        estado = \"Normal\"\n    //Low Low\n    if (level < lowLow) {\n        if (lastState !== \"Low-Low\")\n            estado = \"Low-Low\"\n    }\n    //Low\n    if (level < low) {\n        if (lastState !== \"Low\")\n            estado = \"Low\"\n    }\n    //High High\n    if (level > highHigh) {\n        if (lastState !== \"High-High\")\n            estado = \"High-High\"\n    }\n    //High\n    if (level > high) {\n        if (lastState !== \"High\")\n            estado = \"High\"\n    }\n\n}\n\nmsg.payload.estado = estado\nreturn msg;\n\n\n\n\n\n\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1358,
+        "y": 576,
+        "wires": [
+            [
+                "cffca188f996e5f6"
+            ]
+        ]
+    },
+    {
+        "id": "cffca188f996e5f6",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Armar objeto",
+        "func": "let currentTime = Date.now()\nconst medicion = {\n    \"nivel\": msg.payload.nivel,\n    \"volumen\": msg.payload.volumen,\n    \"ETA\": msg.payload.eta,\n    \"caudal\": msg.payload.caudal,\n    \"estado\": msg.payload.estado,\n    \"temperatura\":msg.payload.temperatura,\n    \"tiempo\": currentTime\n}\nmsg.topic = \"inicial\"\nmsg.payload.medicion = medicion\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1532,
+        "y": 576,
+        "wires": [
+            [
+                "2614e54fb8a332d7",
+                "341d6a0613209ac4"
+            ]
+        ]
+    },
+    {
+        "id": "16f30e7171618337",
+        "type": "switch",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "property": "container.primera",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "true",
+                "vt": "jsonata"
+            },
+            {
+                "t": "eq",
+                "v": "false",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 428,
+        "y": 504,
+        "wires": [
+            [
+                "0788541e16ec93e4",
+                "97d5a4872625b3ec"
+            ],
+            [
+                "398fd7c154a5c79a"
+            ]
+        ]
+    },
+    {
+        "id": "67d397237c754ae9",
+        "type": "change",
+        "z": "ae588d9b3fae37a1",
+        "name": "Primera",
+        "rules": [
+            {
+                "t": "set",
+                "p": "container.primera",
+                "pt": "global",
+                "to": "false",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "container.temperatura",
+                "pt": "global",
+                "to": "payload.inicial.temperatura",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "container.altura",
+                "pt": "global",
+                "to": "payload.inicial.distancia",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1560,
+        "y": 414,
+        "wires": [
+            [
+                "b9a9871933956357"
+            ]
+        ]
+    },
+    {
+        "id": "97d5a4872625b3ec",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Update",
+        "func": "const contenedor = global.get('container')\n\nvar newMsg = {\n    'collection': 'container',\n    'operation': 'update',\n    'query': {\n        _id: contenedor._id\n    },\n    'payload': {    \n        $set: {\n            \"altura\": msg.payload.distancia,\n            \"temperatura\": msg.payload.temperatura\n        },\n    }\n};\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 678,
+        "y": 486,
+        "wires": [
+            [
+                "4f54c4f907ce8495"
+            ]
+        ]
+    },
+    {
+        "id": "2614e54fb8a332d7",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Update",
+        "func": "var newMsg = {\n    'collection': 'container',\n    'operation': 'update',\n    'query': {\n        _id: \"6483d3ff04e0120007621e30\"\n    },\n    'payload': { \n        $push: {   \n            \"mediciones\" : msg.payload.medicion\n        },\n        $set: {\n            \"ultimaMedicion\": msg.payload.medicion\n        },\n    }\n};\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1698,
+        "y": 522,
+        "wires": [
+            [
+                "3f379c851dad510c"
+            ]
+        ]
+    },
+    {
+        "id": "4f54c4f907ce8495",
+        "type": "mongodb-node",
+        "z": "ae588d9b3fae37a1",
+        "mongodb": "ce26f499c263739a",
+        "name": "Update",
+        "collection": "container",
+        "operation": "update",
+        "upsert": false,
+        "multi": false,
+        "x": 816,
+        "y": 486,
+        "wires": [
+            [
+                "9a05ebef32842a9f"
+            ]
+        ]
+    },
+    {
+        "id": "3f379c851dad510c",
+        "type": "mongodb-node",
+        "z": "ae588d9b3fae37a1",
+        "mongodb": "ce26f499c263739a",
+        "name": "Update",
+        "collection": "container",
+        "operation": "update",
+        "upsert": false,
+        "multi": false,
+        "x": 1848,
+        "y": 522,
+        "wires": [
+            [
+                "1e273ddbc8b43d3a"
+            ]
+        ]
+    },
+    {
+        "id": "39032ebd61a6adfa",
+        "type": "inject",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 810,
+        "wires": [
+            [
+                "c5b0ab69eeb2efcd"
+            ]
+        ]
+    },
+    {
+        "id": "e585be5a50c6bd89",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "to JSON",
+        "func": "let s = msg.payload.replace(/\\\\n/g, \"\\\\n\")\n    .replace(/\\\\'/g, \"\\\\'\")\n    .replace(/\\\\\"/g, '\\\\\"')\n    .replace(/\\\\&/g, \"\\\\&\")\n    .replace(/\\\\r/g, \"\\\\r\")\n    .replace(/\\\\t/g, \"\\\\t\")\n    .replace(/\\\\b/g, \"\\\\b\")\n    .replace(/\\\\f/g, \"\\\\f\");\n// Remove non-printable and other non-valid JSON characters\ns = s.replace(/[\\u0000-\\u0019]+/g, \"\");\nvar o = JSON.parse(s);\n\nmsg.payload = o;\n\n//let data = JSON.parse(msg.payload);\n//console.log(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 624,
+        "y": 810,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fb1491587a52ca95",
+        "type": "json",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": false,
+        "x": 490,
+        "y": 810,
+        "wires": [
+            [
+                "e585be5a50c6bd89"
+            ]
+        ]
+    },
+    {
+        "id": "9a05ebef32842a9f",
+        "type": "json",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": false,
+        "x": 940,
+        "y": 486,
+        "wires": [
+            [
+                "ebca2435e78c8506"
+            ]
+        ]
+    },
+    {
+        "id": "ebca2435e78c8506",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "to JSON",
+        "func": "let s = msg.payload.replace(/\\\\n/g, \"\\\\n\")\n    .replace(/\\\\'/g, \"\\\\'\")\n    .replace(/\\\\\"/g, '\\\\\"')\n    .replace(/\\\\&/g, \"\\\\&\")\n    .replace(/\\\\r/g, \"\\\\r\")\n    .replace(/\\\\t/g, \"\\\\t\")\n    .replace(/\\\\b/g, \"\\\\b\")\n    .replace(/\\\\f/g, \"\\\\f\");\n// Remove non-printable and other non-valid JSON characters\ns = s.replace(/[\\u0000-\\u0019]+/g, \"\");\nvar o = JSON.parse(s);\n\nmsg.payload = o;\nmsg.topic = \"response\"\n\n//let data = JSON.parse(msg.payload);\n//console.log(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1068,
+        "y": 486,
+        "wires": [
+            [
+                "c9ebf2ea9b954364"
+            ]
+        ]
+    },
+    {
+        "id": "c749fa063525f581",
+        "type": "switch",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "property": "payload.response.ok",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1372,
+        "y": 450,
+        "wires": [
+            [
+                "67d397237c754ae9"
+            ],
+            [
+                "a6c25776d746e1b6"
+            ]
+        ]
+    },
+    {
+        "id": "a6c25776d746e1b6",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Armo Respuesta Error",
+        "func": "msg.payload = {\n    msg: `Update Error`\n}\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1592,
+        "y": 468,
+        "wires": [
+            [
+                "8ea5553d0d298f58"
+            ]
+        ]
+    },
+    {
+        "id": "8ea5553d0d298f58",
+        "type": "debug",
+        "z": "ae588d9b3fae37a1",
+        "name": "debug 54",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1770,
+        "y": 468,
+        "wires": []
+    },
+    {
+        "id": "c9ebf2ea9b954364",
+        "type": "join",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1210,
+        "y": 450,
+        "wires": [
+            [
+                "c749fa063525f581"
+            ]
+        ]
+    },
+    {
+        "id": "0788541e16ec93e4",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "function 7",
+        "func": "msg.topic = \"inicial\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 414,
+        "wires": [
+            [
+                "c9ebf2ea9b954364"
+            ]
+        ]
+    },
+    {
+        "id": "9365379bf8a2a596",
+        "type": "debug",
+        "z": "ae588d9b3fae37a1",
+        "name": "debug 55",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 426,
+        "y": 612,
+        "wires": []
+    },
+    {
+        "id": "341d6a0613209ac4",
+        "type": "join",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 2290,
+        "y": 576,
+        "wires": [
+            [
+                "6b10a921aa8102b4"
+            ]
+        ]
+    },
+    {
+        "id": "1e273ddbc8b43d3a",
+        "type": "json",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "property": "payload",
+        "action": "str",
+        "pretty": false,
+        "x": 1984,
+        "y": 522,
+        "wires": [
+            [
+                "a55530c27f666fab"
+            ]
+        ]
+    },
+    {
+        "id": "a55530c27f666fab",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "to JSON",
+        "func": "let s = msg.payload.replace(/\\\\n/g, \"\\\\n\")\n    .replace(/\\\\'/g, \"\\\\'\")\n    .replace(/\\\\\"/g, '\\\\\"')\n    .replace(/\\\\&/g, \"\\\\&\")\n    .replace(/\\\\r/g, \"\\\\r\")\n    .replace(/\\\\t/g, \"\\\\t\")\n    .replace(/\\\\b/g, \"\\\\b\")\n    .replace(/\\\\f/g, \"\\\\f\");\n// Remove non-printable and other non-valid JSON characters\ns = s.replace(/[\\u0000-\\u0019]+/g, \"\");\nvar o = JSON.parse(s);\n\nmsg.payload = o;\nmsg.topic = \"response\"\n\n//let data = JSON.parse(msg.payload);\n//console.log(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2118,
+        "y": 522,
+        "wires": [
+            [
+                "341d6a0613209ac4"
+            ]
+        ]
+    },
+    {
+        "id": "6b10a921aa8102b4",
+        "type": "switch",
+        "z": "ae588d9b3fae37a1",
+        "name": "",
+        "property": "payload.response.ok",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2434,
+        "y": 576,
+        "wires": [
+            [
+                "2d3bebef2ddfe095"
+            ],
+            [
+                "7d1d4428a0b72f51"
+            ]
+        ]
+    },
+    {
+        "id": "7d1d4428a0b72f51",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Armo Respuesta Error",
+        "func": "msg.payload = {\n    msg: `Update Error`\n}\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2638,
+        "y": 612,
+        "wires": [
+            [
+                "2a2629d7e170136f"
+            ]
+        ]
+    },
+    {
+        "id": "2a2629d7e170136f",
+        "type": "debug",
+        "z": "ae588d9b3fae37a1",
+        "name": "debug 56",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2832,
+        "y": 612,
+        "wires": []
+    },
+    {
+        "id": "2d3bebef2ddfe095",
+        "type": "change",
+        "z": "ae588d9b3fae37a1",
+        "name": "Actualizar",
+        "rules": [
+            {
+                "t": "set",
+                "p": "container.ultima",
+                "pt": "global",
+                "to": "payload.inicial.medicion",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2604,
+        "y": 540,
+        "wires": [
+            [
+                "96888705c3e7a435"
+            ]
+        ]
+    },
+    {
+        "id": "96888705c3e7a435",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Alertar",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2758,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "510d9a226ec56fbf",
+        "type": "change",
+        "z": "ae588d9b3fae37a1",
+        "name": "Actualizar",
+        "rules": [
+            {
+                "t": "set",
+                "p": "container.ultima",
+                "pt": "global",
+                "to": "payload.medicion",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1848,
+        "y": 414,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9a9871933956357",
+        "type": "function",
+        "z": "ae588d9b3fae37a1",
+        "name": "Tiempo",
+        "func": "let currentTime = Date.now()\nconst medicion = {\n    \"nivel\": 0,\n    \"volumen\": 0,\n    \"ETA\": 0,\n    \"caudal\": 0,\n    \"estado\": 0,\n    \"temperatura\": msg.payload.inicial.temperatura,\n    \"tiempo\": currentTime\n}\nmsg.payload.medicion = medicion\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1704,
+        "y": 414,
+        "wires": [
+            [
+                "510d9a226ec56fbf"
+            ]
+        ]
+    },
+    {
         "id": "0d27d53123a1bbed",
         "type": "inject",
         "z": "6f2117e9081c52cf",
@@ -1286,7 +2877,7 @@
                 "t": "set",
                 "p": "container",
                 "pt": "global",
-                "to": "payload.container._id",
+                "to": "payload.container",
                 "tot": "msg"
             }
         ],
@@ -1299,7 +2890,7 @@
         "y": 126,
         "wires": [
             [
-                "58335f524a98764c"
+                "3fc9484950c5daec"
             ]
         ]
     },
@@ -1314,8 +2905,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 936,
-        "y": 126,
+        "x": 1008,
+        "y": 144,
         "wires": [
             [
                 "8d436f8455148d8c"
@@ -1350,6 +2941,33 @@
         "wires": [
             [
                 "625feb44002a34a5"
+            ]
+        ]
+    },
+    {
+        "id": "3fc9484950c5daec",
+        "type": "change",
+        "z": "6f2117e9081c52cf",
+        "name": "Actual Container",
+        "rules": [
+            {
+                "t": "set",
+                "p": "container.primera",
+                "pt": "global",
+                "to": "true",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 792,
+        "y": 198,
+        "wires": [
+            [
+                "58335f524a98764c"
             ]
         ]
     },
@@ -1443,8 +3061,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 268,
-        "y": 180,
+        "x": 274,
+        "y": 216,
         "wires": []
     },
     {
@@ -1452,7 +3070,7 @@
         "type": "mqtt in",
         "z": "bbf8bb52d5a439a2",
         "name": "Medicion Recibida",
-        "topic": "medicion",
+        "topic": "Mediciones",
         "qos": "0",
         "datatype": "auto-detect",
         "broker": "4ce4539142712cae",
@@ -1464,7 +3082,8 @@
         "y": 324,
         "wires": [
             [
-                "c6df7f9f0175a190"
+                "c6df7f9f0175a190",
+                "daa23b90f77653e8"
             ]
         ]
     },
@@ -1768,7 +3387,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1716,
-        "y": 414,
+        "y": 486,
         "wires": []
     },
     {
@@ -1780,8 +3399,8 @@
             "15f381c645f32740"
         ],
         "uncaught": false,
-        "x": 1726,
-        "y": 360,
+        "x": 1570,
+        "y": 486,
         "wires": [
             [
                 "fe3b17ba74ee5479"
@@ -1800,8 +3419,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1752,
-        "y": 414,
+        "x": 1986,
+        "y": 612,
         "wires": []
     },
     {
@@ -1818,6 +3437,22 @@
         "statusType": "auto",
         "x": 2082,
         "y": 396,
+        "wires": []
+    },
+    {
+        "id": "daa23b90f77653e8",
+        "type": "debug",
+        "z": "bbf8bb52d5a439a2",
+        "name": "debug 38",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 438,
+        "y": 450,
         "wires": []
     },
     {
@@ -2331,8 +3966,8 @@
         "freq": "",
         "out": "out",
         "bcm": true,
-        "x": 580,
-        "y": 440,
+        "x": 588,
+        "y": 378,
         "wires": []
     },
     {
@@ -2360,7 +3995,7 @@
         "y": 400,
         "wires": [
             [
-                "534b43f10932bf29"
+                "26a155e0c5996546"
             ]
         ]
     },
@@ -2389,7 +4024,7 @@
         "y": 460,
         "wires": [
             [
-                "534b43f10932bf29"
+                "26a155e0c5996546"
             ]
         ]
     },
@@ -2665,11 +4300,53 @@
         "wires": []
     },
     {
+        "id": "26a155e0c5996546",
+        "type": "exec",
+        "z": "4e4be63df05180bc",
+        "command": "python /data/led.py",
+        "addpay": "",
+        "append": "1",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 612,
+        "y": 450,
+        "wires": [
+            [
+                "5b8691d97b5b132e"
+            ],
+            [
+                "5b8691d97b5b132e"
+            ],
+            [
+                "5b8691d97b5b132e"
+            ]
+        ]
+    },
+    {
+        "id": "5b8691d97b5b132e",
+        "type": "debug",
+        "z": "4e4be63df05180bc",
+        "name": "debug 57",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 888,
+        "y": 468,
+        "wires": []
+    },
+    {
         "id": "806d1d4a105c9c16",
         "type": "mqtt in",
         "z": "0851b9d91a4d916f",
         "name": "",
-        "topic": "mediciones",
+        "topic": "Mediciones",
         "qos": "0",
         "datatype": "json",
         "broker": "8cc4005609a73937",
@@ -2681,7 +4358,8 @@
         "y": 280,
         "wires": [
             [
-                "0edb10e300ac66a9"
+                "0edb10e300ac66a9",
+                "86ed8c7c50ee772b"
             ]
         ]
     },
@@ -2881,6 +4559,55 @@
         "statusType": "auto",
         "x": 580,
         "y": 580,
+        "wires": []
+    },
+    {
+        "id": "86ed8c7c50ee772b",
+        "type": "debug",
+        "z": "0851b9d91a4d916f",
+        "name": "debug 39",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 312,
+        "y": 342,
+        "wires": []
+    },
+    {
+        "id": "14348341899996f6",
+        "type": "catch",
+        "z": "0851b9d91a4d916f",
+        "name": "",
+        "scope": [
+            "806d1d4a105c9c16"
+        ],
+        "uncaught": false,
+        "x": 860,
+        "y": 252,
+        "wires": [
+            [
+                "2fa063ed90b2ccf4"
+            ]
+        ]
+    },
+    {
+        "id": "2fa063ed90b2ccf4",
+        "type": "debug",
+        "z": "0851b9d91a4d916f",
+        "name": "debug 40",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1074,
+        "y": 234,
         "wires": []
     },
     {
@@ -3824,6 +5551,255 @@
         "wires": [
             [
                 "0851fac1b478e3d9"
+            ]
+        ]
+    },
+    {
+        "id": "fcd2dd966646f325",
+        "type": "link in",
+        "z": "b975189eeafb751a",
+        "name": "link in 1",
+        "links": [
+            "01d9d2d50b595f38"
+        ],
+        "x": 129,
+        "y": 414,
+        "wires": [
+            [
+                "45eceda707b8bf30",
+                "0b8e0b9250f96660",
+                "7c1f59fa4980e498",
+                "54afa9a6f678ad33",
+                "f797ca31db815d2e"
+            ]
+        ]
+    },
+    {
+        "id": "60640ed9c276b0c2",
+        "type": "ui_gauge",
+        "z": "b975189eeafb751a",
+        "name": "",
+        "group": "17d19835de663e2f",
+        "order": 3,
+        "width": "10",
+        "height": "10",
+        "gtype": "wave",
+        "title": "Nivel",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 626,
+        "y": 306,
+        "wires": []
+    },
+    {
+        "id": "45eceda707b8bf30",
+        "type": "debug",
+        "z": "b975189eeafb751a",
+        "name": "debug 53",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 282,
+        "y": 612,
+        "wires": []
+    },
+    {
+        "id": "0b8e0b9250f96660",
+        "type": "function",
+        "z": "b975189eeafb751a",
+        "name": "Nivel",
+        "func": "let contenedor = global.get(\"container\");\nlet value = (msg.payload.nivel / contenedor.altura) * 100;\n\nmsg = {\n    ui_control: {\n        \"gtype\": \"wave\",\n        \"min\": 0,\n        \"max\": 100\n\n    },\n    payload: value\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 392,
+        "y": 306,
+        "wires": [
+            [
+                "60640ed9c276b0c2"
+            ]
+        ]
+    },
+    {
+        "id": "db9656a69f41d1ed",
+        "type": "ui_chart",
+        "z": "b975189eeafb751a",
+        "name": "",
+        "group": "17d19835de663e2f",
+        "order": 1,
+        "width": "10",
+        "height": "12",
+        "label": "Temperatura",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-10",
+        "ymax": "40",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 646,
+        "y": 378,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7c1f59fa4980e498",
+        "type": "function",
+        "z": "b975189eeafb751a",
+        "name": "Temperatura",
+        "func": "let value = msg.payload.temperatura;\n\nmsg = {\n    // ui_control: {\n    //     \"gtype\": \"wave\",\n    //     \"min\": 0,\n    //     \"max\": 100\n    // },\n    payload: value\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 412,
+        "y": 378,
+        "wires": [
+            [
+                "db9656a69f41d1ed"
+            ]
+        ]
+    },
+    {
+        "id": "8b8ada14934763a1",
+        "type": "ui_chart",
+        "z": "b975189eeafb751a",
+        "name": "",
+        "group": "17d19835de663e2f",
+        "order": 1,
+        "width": "10",
+        "height": "12",
+        "label": "Caudal",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "40",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 636,
+        "y": 450,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "54afa9a6f678ad33",
+        "type": "function",
+        "z": "b975189eeafb751a",
+        "name": "Caudal",
+        "func": "let value = msg.payload.caudal;\n\nmsg = {\n    // ui_control: {\n    //     \"gtype\": \"wave\",\n    //     \"min\": 0,\n    //     \"max\": 100\n    // },\n    payload: value\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 402,
+        "y": 450,
+        "wires": [
+            [
+                "8b8ada14934763a1"
+            ]
+        ]
+    },
+    {
+        "id": "029275760a442050",
+        "type": "ui_text",
+        "z": "b975189eeafb751a",
+        "group": "17d19835de663e2f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "ETA",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 626,
+        "y": 522,
+        "wires": []
+    },
+    {
+        "id": "f797ca31db815d2e",
+        "type": "function",
+        "z": "b975189eeafb751a",
+        "name": "ETA",
+        "func": "let value = msg.payload.eta;\n\nmsg = {\n    // ui_control: {\n    //     \"gtype\": \"wave\",\n    //     \"min\": 0,\n    //     \"max\": 100\n    // },\n    payload: value\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 396,
+        "y": 522,
+        "wires": [
+            [
+                "029275760a442050"
             ]
         ]
     }
