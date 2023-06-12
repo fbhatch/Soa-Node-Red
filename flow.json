@@ -237,7 +237,7 @@
         "id": "c4d89469b20c0f9e",
         "type": "ui_base",
         "theme": {
-            "name": "theme-light",
+            "name": "theme-dark",
             "lightTheme": {
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
@@ -249,7 +249,8 @@
                 "default": "#097479",
                 "baseColor": "#097479",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "edited": true,
+                "reset": false
             },
             "customTheme": {
                 "name": "Untitled Theme 1",
@@ -259,44 +260,44 @@
             },
             "themeState": {
                 "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
+                    "default": "#097479",
+                    "value": "#097479",
                     "edited": false
                 },
                 "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
+                    "value": "#097479",
                     "edited": false
                 },
                 "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
                     "value": "#111111",
                     "edited": false
                 },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
                 "widget-backgroundColor": {
-                    "value": "#0094ce",
+                    "value": "#097479",
                     "edited": false
                 },
                 "widget-borderColor": {
-                    "value": "#ffffff",
+                    "value": "#333333",
                     "edited": false
                 },
                 "base-font": {
@@ -333,9 +334,9 @@
     {
         "id": "17d19835de663e2f",
         "type": "ui_group",
-        "name": "Sensores",
+        "name": "Graficos",
         "tab": "358456880232ef9c",
-        "order": 1,
+        "order": 2,
         "disp": true,
         "width": "20",
         "collapse": false,
@@ -344,21 +345,31 @@
     {
         "id": "358456880232ef9c",
         "type": "ui_tab",
-        "name": "Menu principal",
+        "name": "HISTORIAL",
         "icon": "dashboard",
+        "order": 2,
         "disabled": false,
         "hidden": false
     },
     {
         "id": "57a3c8c6be82297f",
         "type": "ui_group",
-        "name": "Calculos",
-        "tab": "358456880232ef9c",
-        "order": 2,
+        "name": "EN VIVO",
+        "tab": "db73469ce5a826b3",
+        "order": 1,
         "disp": true,
         "width": "6",
         "collapse": false,
         "className": ""
+    },
+    {
+        "id": "db73469ce5a826b3",
+        "type": "ui_tab",
+        "name": "EN VIVO",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "e6c11394069457fd",
@@ -1335,7 +1346,6 @@
         "y": 576,
         "wires": [
             [
-                "01d9d2d50b595f38",
                 "117224e504b86535"
             ]
         ]
@@ -1915,7 +1925,7 @@
         "links": [
             "fcd2dd966646f325"
         ],
-        "x": 591,
+        "x": 1677,
         "y": 648,
         "wires": []
     },
@@ -2034,7 +2044,8 @@
         "wires": [
             [
                 "2614e54fb8a332d7",
-                "341d6a0613209ac4"
+                "341d6a0613209ac4",
+                "01d9d2d50b595f38"
             ]
         ]
     },
@@ -3894,83 +3905,6 @@
         "wires": []
     },
     {
-        "id": "902aa83bf72143d2",
-        "type": "Bme280",
-        "z": "4e4be63df05180bc",
-        "name": "",
-        "bus": "1",
-        "address": "0x76",
-        "topic": "bme280",
-        "extra": false,
-        "x": 480,
-        "y": 240,
-        "wires": [
-            [
-                "96729fb65278186d"
-            ]
-        ]
-    },
-    {
-        "id": "46010bbb6abcd3f6",
-        "type": "inject",
-        "z": "4e4be63df05180bc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "5",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 310,
-        "y": 220,
-        "wires": [
-            [
-                "902aa83bf72143d2"
-            ]
-        ]
-    },
-    {
-        "id": "96729fb65278186d",
-        "type": "debug",
-        "z": "4e4be63df05180bc",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 680,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "534b43f10932bf29",
-        "type": "rpi-gpio out",
-        "z": "4e4be63df05180bc",
-        "name": "",
-        "pin": "26",
-        "set": true,
-        "level": "1",
-        "freq": "",
-        "out": "out",
-        "bcm": true,
-        "x": 588,
-        "y": 378,
-        "wires": []
-    },
-    {
         "id": "0bb4c05476eddafa",
         "type": "inject",
         "z": "4e4be63df05180bc",
@@ -3995,7 +3929,7 @@
         "y": 400,
         "wires": [
             [
-                "26a155e0c5996546"
+                "f44c60079148d0f6"
             ]
         ]
     },
@@ -4024,7 +3958,7 @@
         "y": 460,
         "wires": [
             [
-                "26a155e0c5996546"
+                "f44c60079148d0f6"
             ]
         ]
     },
@@ -4036,7 +3970,7 @@
         "topic": "led",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "4ce4539142712cae",
+        "broker": "8cc4005609a73937",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -4044,301 +3978,329 @@
         "x": 350,
         "y": 520,
         "wires": [
-            []
+            [
+                "dabb8d731704b0a5"
+            ]
         ]
     },
     {
-        "id": "830859186db3c93f",
-        "type": "rpi-gpio out",
+        "id": "f44c60079148d0f6",
+        "type": "pi-gpiod out",
         "z": "4e4be63df05180bc",
-        "name": "azul",
+        "name": "",
+        "host": "192.168.192.1",
+        "port": "8888",
         "pin": "26",
         "set": true,
-        "level": "0",
-        "freq": "",
+        "level": "1",
         "out": "out",
-        "bcm": true,
-        "x": 650,
-        "y": 680,
-        "wires": []
-    },
-    {
-        "id": "15a5ab519c5417dd",
-        "type": "rpi-gpio out",
-        "z": "4e4be63df05180bc",
-        "name": "verde",
-        "pin": "19",
-        "set": true,
-        "level": "0",
-        "freq": "",
-        "out": "out",
-        "bcm": true,
-        "x": 650,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "6060d5748f4cc30d",
-        "type": "rpi-gpio out",
-        "z": "4e4be63df05180bc",
-        "name": "rojo",
-        "pin": "13",
-        "set": "",
-        "level": "0",
-        "freq": "",
-        "out": "out",
-        "bcm": true,
-        "x": 650,
-        "y": 800,
-        "wires": []
-    },
-    {
-        "id": "d0796350c4ff69fb",
-        "type": "inject",
-        "z": "4e4be63df05180bc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "1",
-        "payloadType": "num",
-        "x": 370,
-        "y": 640,
-        "wires": [
-            [
-                "830859186db3c93f"
-            ]
-        ]
-    },
-    {
-        "id": "1a30e7ae4c50f857",
-        "type": "inject",
-        "z": "4e4be63df05180bc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "0",
-        "payloadType": "num",
-        "x": 370,
-        "y": 700,
-        "wires": [
-            [
-                "830859186db3c93f"
-            ]
-        ]
-    },
-    {
-        "id": "c580f1e16cd2b0b6",
-        "type": "inject",
-        "z": "4e4be63df05180bc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "1",
-        "payloadType": "num",
-        "x": 370,
-        "y": 760,
-        "wires": [
-            [
-                "15a5ab519c5417dd"
-            ]
-        ]
-    },
-    {
-        "id": "dd1d204adb8e57d6",
-        "type": "inject",
-        "z": "4e4be63df05180bc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "0",
-        "payloadType": "num",
-        "x": 370,
-        "y": 820,
-        "wires": [
-            [
-                "15a5ab519c5417dd"
-            ]
-        ]
-    },
-    {
-        "id": "76a1e1276f493a72",
-        "type": "inject",
-        "z": "4e4be63df05180bc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "1",
-        "payloadType": "num",
-        "x": 370,
-        "y": 880,
-        "wires": [
-            [
-                "6060d5748f4cc30d"
-            ]
-        ]
-    },
-    {
-        "id": "6c7c319681136404",
-        "type": "inject",
-        "z": "4e4be63df05180bc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "0",
-        "payloadType": "num",
-        "x": 370,
-        "y": 940,
-        "wires": [
-            [
-                "6060d5748f4cc30d"
-            ]
-        ]
-    },
-    {
-        "id": "4b7f5a1b32710998",
-        "type": "rpi-srf",
-        "z": "4e4be63df05180bc",
-        "name": "",
-        "topic": "SRF",
-        "pulse": "0.5",
-        "pins": "16,18",
-        "precision": "0",
-        "x": 810,
-        "y": 340,
-        "wires": [
-            [
-                "d33f8ce794a42e3f"
-            ]
-        ]
-    },
-    {
-        "id": "d33f8ce794a42e3f",
-        "type": "debug",
-        "z": "4e4be63df05180bc",
-        "name": "debug 8",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 980,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "26a155e0c5996546",
-        "type": "exec",
-        "z": "4e4be63df05180bc",
-        "command": "python /data/led.py",
-        "addpay": "",
-        "append": "1",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 612,
+        "sermin": "1000",
+        "sermax": "2000",
+        "freq": "800",
+        "x": 840,
         "y": 450,
+        "wires": []
+    },
+    {
+        "id": "4bdeaa14fb69ac69",
+        "type": "comment",
+        "z": "4e4be63df05180bc",
+        "name": "commands",
+        "info": "docker exec -it mosquitto-mosquitto-1 sh\nmosquitto_pub -t led -m 1 -h localhost\nmosquitto_pub -t led -m 0 -h localhost",
+        "x": 210,
+        "y": 522,
+        "wires": []
+    },
+    {
+        "id": "dabb8d731704b0a5",
+        "type": "function",
+        "z": "4e4be63df05180bc",
+        "name": "function 8",
+        "func": "if(msg.payload==1){\n    return [msg,null,null];\n}\nif (msg.payload == 0) {\n    return [null, msg, null];\n}\nif (msg.payload >1) {\n    return [null, null, msg];\n}\n",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 528,
+        "y": 504,
         "wires": [
             [
-                "5b8691d97b5b132e"
+                "f44c60079148d0f6"
             ],
             [
-                "5b8691d97b5b132e"
+                "f44c60079148d0f6"
             ],
             [
-                "5b8691d97b5b132e"
+                "98a534a7b7207554"
             ]
         ]
     },
     {
-        "id": "5b8691d97b5b132e",
+        "id": "98a534a7b7207554",
+        "type": "change",
+        "z": "4e4be63df05180bc",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "[1,0,1,0,1,0]",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 712,
+        "y": 540,
+        "wires": [
+            [
+                "263c05dfb670e725"
+            ]
+        ]
+    },
+    {
+        "id": "f7ae7e7adda4ca49",
+        "type": "delay",
+        "z": "4e4be63df05180bc",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "2",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1024,
+        "y": 540,
+        "wires": [
+            [
+                "f44c60079148d0f6",
+                "20cd2e0a6cd772da"
+            ]
+        ]
+    },
+    {
+        "id": "263c05dfb670e725",
+        "type": "split",
+        "z": "4e4be63df05180bc",
+        "name": "",
+        "splt": ",",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 868,
+        "y": 540,
+        "wires": [
+            [
+                "f7ae7e7adda4ca49"
+            ]
+        ]
+    },
+    {
+        "id": "20cd2e0a6cd772da",
         "type": "debug",
         "z": "4e4be63df05180bc",
         "name": "debug 57",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 888,
-        "y": 468,
+        "x": 1230,
+        "y": 576,
+        "wires": []
+    },
+    {
+        "id": "bcaf772ec26ff4aa",
+        "type": "mqtt in",
+        "z": "4e4be63df05180bc",
+        "name": "",
+        "topic": "led-rgb",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "8cc4005609a73937",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 356,
+        "y": 702,
+        "wires": [
+            [
+                "a8df507b71d607a7"
+            ]
+        ]
+    },
+    {
+        "id": "a8df507b71d607a7",
+        "type": "json",
+        "z": "4e4be63df05180bc",
+        "name": "ToObject",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 526,
+        "y": 702,
+        "wires": [
+            [
+                "0b0aced60a645c2a"
+            ]
+        ]
+    },
+    {
+        "id": "0b0aced60a645c2a",
+        "type": "function",
+        "z": "4e4be63df05180bc",
+        "name": "function 13",
+        "func": "msg.payload.rojo = msg.payload[0];\nmsg.payload.verde = msg.payload[1];\nmsg.payload.azul = msg.payload[2];\n\nreturn msg;\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 696,
+        "y": 702,
+        "wires": [
+            [
+                "8b280ba5b1c45db5",
+                "f68db911cabcbb2d",
+                "fb3e3c576a739acb"
+            ]
+        ]
+    },
+    {
+        "id": "8b280ba5b1c45db5",
+        "type": "function",
+        "z": "4e4be63df05180bc",
+        "name": "Rojo",
+        "func": "msg.payload = msg.payload[0];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 702,
+        "wires": [
+            [
+                "7af592aebddb513d"
+            ]
+        ]
+    },
+    {
+        "id": "f68db911cabcbb2d",
+        "type": "function",
+        "z": "4e4be63df05180bc",
+        "name": "Verde",
+        "func": "msg.payload = msg.payload[1];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 738,
+        "wires": [
+            [
+                "c22f2675d5959bd2"
+            ]
+        ]
+    },
+    {
+        "id": "fb3e3c576a739acb",
+        "type": "function",
+        "z": "4e4be63df05180bc",
+        "name": "Azul",
+        "func": "msg.payload = msg.payload[2];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 878,
+        "y": 774,
+        "wires": [
+            [
+                "24950096ec3ba585"
+            ]
+        ]
+    },
+    {
+        "id": "24950096ec3ba585",
+        "type": "pi-gpiod out",
+        "z": "4e4be63df05180bc",
+        "name": "azul",
+        "host": "192.168.192.1",
+        "port": "8888",
+        "pin": "16",
+        "set": false,
+        "level": "1",
+        "out": "pwm",
+        "sermin": "1000",
+        "sermax": "2000",
+        "freq": "800",
+        "x": 1032,
+        "y": 774,
+        "wires": []
+    },
+    {
+        "id": "c22f2675d5959bd2",
+        "type": "pi-gpiod out",
+        "z": "4e4be63df05180bc",
+        "name": "verde",
+        "host": "192.168.192.1",
+        "port": "8888",
+        "pin": "20",
+        "set": false,
+        "level": "1",
+        "out": "pwm",
+        "sermin": "1000",
+        "sermax": "2000",
+        "freq": "800",
+        "x": 1032,
+        "y": 738,
+        "wires": []
+    },
+    {
+        "id": "7af592aebddb513d",
+        "type": "pi-gpiod out",
+        "z": "4e4be63df05180bc",
+        "name": "rouge",
+        "host": "192.168.192.1",
+        "port": "8888",
+        "pin": "21",
+        "set": false,
+        "level": "1",
+        "out": "pwm",
+        "sermin": "1000",
+        "sermax": "2000",
+        "freq": "800",
+        "x": 1032,
+        "y": 702,
+        "wires": []
+    },
+    {
+        "id": "ccba867a1161b2b6",
+        "type": "comment",
+        "z": "4e4be63df05180bc",
+        "name": "commands",
+        "info": "docker exec -it mosquitto-mosquitto-1 sh\nmosquitto_pub -t led-rgb -m [0,0,100] -h localhost",
+        "x": 210,
+        "y": 702,
         "wires": []
     },
     {
@@ -5579,10 +5541,10 @@
         "type": "ui_gauge",
         "z": "b975189eeafb751a",
         "name": "",
-        "group": "17d19835de663e2f",
-        "order": 3,
-        "width": "10",
-        "height": "10",
+        "group": "57a3c8c6be82297f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
         "gtype": "wave",
         "title": "Nivel",
         "label": "%",
@@ -5614,8 +5576,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 282,
-        "y": 612,
+        "x": 258,
+        "y": 720,
         "wires": []
     },
     {
@@ -5676,7 +5638,7 @@
         "useDifferentColor": false,
         "className": "",
         "x": 646,
-        "y": 378,
+        "y": 414,
         "wires": [
             []
         ]
@@ -5693,10 +5655,11 @@
         "finalize": "",
         "libs": [],
         "x": 412,
-        "y": 378,
+        "y": 414,
         "wires": [
             [
-                "db9656a69f41d1ed"
+                "db9656a69f41d1ed",
+                "601e4cf9c4aaa9ae"
             ]
         ]
     },
@@ -5739,7 +5702,7 @@
         "useDifferentColor": false,
         "className": "",
         "x": 636,
-        "y": 450,
+        "y": 522,
         "wires": [
             []
         ]
@@ -5756,10 +5719,11 @@
         "finalize": "",
         "libs": [],
         "x": 402,
-        "y": 450,
+        "y": 522,
         "wires": [
             [
-                "8b8ada14934763a1"
+                "8b8ada14934763a1",
+                "e889061a5442645f"
             ]
         ]
     },
@@ -5767,13 +5731,13 @@
         "id": "029275760a442050",
         "type": "ui_text",
         "z": "b975189eeafb751a",
-        "group": "17d19835de663e2f",
-        "order": 3,
+        "group": "57a3c8c6be82297f",
+        "order": 4,
         "width": 0,
         "height": 0,
         "name": "",
         "label": "ETA",
-        "format": "{{msg.payload}}",
+        "format": "{{msg.payload}} seg",
         "layout": "row-center",
         "className": "",
         "style": false,
@@ -5781,7 +5745,7 @@
         "fontSize": 16,
         "color": "#000000",
         "x": 626,
-        "y": 522,
+        "y": 594,
         "wires": []
     },
     {
@@ -5796,11 +5760,53 @@
         "finalize": "",
         "libs": [],
         "x": 396,
-        "y": 522,
+        "y": 594,
         "wires": [
             [
                 "029275760a442050"
             ]
         ]
+    },
+    {
+        "id": "601e4cf9c4aaa9ae",
+        "type": "ui_text",
+        "z": "b975189eeafb751a",
+        "group": "57a3c8c6be82297f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Temperatura",
+        "format": "{{msg.payload}} °C",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 646,
+        "y": 378,
+        "wires": []
+    },
+    {
+        "id": "e889061a5442645f",
+        "type": "ui_text",
+        "z": "b975189eeafb751a",
+        "group": "57a3c8c6be82297f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Caudal",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 636,
+        "y": 486,
+        "wires": []
     }
 ]
