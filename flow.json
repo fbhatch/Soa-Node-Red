@@ -1724,7 +1724,7 @@
         "type": "function",
         "z": "bbf8bb52d5a439a2",
         "name": "Calcular Estado",
-        "func": "const contenedor = global.get('container')\n\nlet levelMax = contenedor.altura\nlet low = levelMax / 4\nlet lowLow = levelMax / 8\nlet high = levelMax * 3 / 4\nlet highHigh = levelMax * 7 / 8\nlet estado\n\nif(contenedor.primera){\n    msg.payload.estado = 0\n    return msg\n}  \nelse {\n    const level = msg.payload.nivel\n    //Normal, no alert\n    if (level >= low && level <= high)\n        estado = \"Normal\"\n    //Low Low\n    if (level < lowLow) {\n        estado = \"Low-Low\"\n    }\n    //Low\n    if (level < low) {\n        estado = \"Low\"\n    }\n    //High High\n    if (level > highHigh) {\n        estado = \"High-High\"\n    }\n    //High\n    if (level > high) {\n        estado = \"High\"\n    }\n\n}\n\nmsg.payload.estado = estado\nreturn msg;\n\n\n\n\n\n\n\n\n\n",
+        "func": "const contenedor = global.get('container')\n\nlet levelMax = contenedor.altura\nlet low = levelMax / 4\nlet lowLow = levelMax / 8\nlet high = levelMax * 3 / 4\nlet highHigh = levelMax * 7 / 8\nlet estado\n\nif(contenedor.primera){\n    msg.payload.estado = 0\n    return msg\n}  \nelse {\n    const level = msg.payload.nivel\n    //Normal, no alert\n    if (level >= low && level <= high)\n        estado = \"Normal\"\n    //Low\n    if (level < low) {\n        estado = \"Low\"\n    }\n    //Low Low\n    if (level < lowLow) {\n        estado = \"Low-Low\"\n    }\n    //High\n    if (level > high) {\n        estado = \"High\"\n    }\n    //High High\n    if (level > highHigh) {\n        estado = \"High-High\"\n    }\n\n}\n\nmsg.payload.estado = estado\nreturn msg;\n\n\n\n\n\n\n\n\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1789,7 +1789,7 @@
                 "97d5a4872625b3ec"
             ],
             [
-                "d5decfb93e0fba8c"
+                "398fd7c154a5c79a"
             ]
         ]
     },
@@ -2281,7 +2281,7 @@
         "type": "function",
         "z": "bbf8bb52d5a439a2",
         "name": "Calibrar",
-        "func": "const contenedor = global.get('container')\nconst distancia = msg.payload.distancia\nconst distanciaAnterior = contenedor.ultima.distancia\nconst delta = Math.abs(distancia-distanciaAnterior)\n\nif(delta < 0.2 || delta > 10)\n    msg.payload.invalido = true\nreturn msg;",
+        "func": "const contenedor = global.get('container')\nconst distancia = msg.payload.distancia\nconst distanciaAnterior = contenedor.ultima.distancia\nconst delta = Math.abs(distancia-distanciaAnterior)\nconst distanciaInicial = contenedor.altura\n\nif (delta < 0.2 || \n    delta > 10 || \n    distancia > distanciaInicial\n    )\n    msg.payload.invalido = true\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -3584,7 +3584,9 @@
                 "0b8e0b9250f96660",
                 "7c1f59fa4980e498",
                 "54afa9a6f678ad33",
-                "f797ca31db815d2e"
+                "f797ca31db815d2e",
+                "16c05f905226675b",
+                "1c9f8dbd6a88c731"
             ]
         ]
     },
@@ -3628,8 +3630,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 282,
-        "y": 702,
+        "x": 300,
+        "y": 900,
         "wires": []
     },
     {
@@ -3905,6 +3907,131 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "35cdb466c3c159dc",
+        "type": "ui_chart",
+        "z": "b975189eeafb751a",
+        "name": "",
+        "group": "17d19835de663e2f",
+        "order": 1,
+        "width": "10",
+        "height": "12",
+        "label": "Volumen",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "40",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 636,
+        "y": 774,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "16c05f905226675b",
+        "type": "function",
+        "z": "b975189eeafb751a",
+        "name": "Nivel",
+        "func": "var numero = msg.payload.volumen;\nvar value = parseFloat(numero.toFixed(2));\n\nmsg = {\n    // ui_control: {\n    //     \"gtype\": \"wave\",\n    //     \"min\": 0,\n    //     \"max\": 100\n    // },\n    payload: value\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 392,
+        "y": 774,
+        "wires": [
+            [
+                "35cdb466c3c159dc",
+                "87d48a4a6366a893"
+            ]
+        ]
+    },
+    {
+        "id": "87d48a4a6366a893",
+        "type": "ui_text",
+        "z": "b975189eeafb751a",
+        "group": "57a3c8c6be82297f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Volumen",
+        "format": "{{msg.payload}} cm³",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 636,
+        "y": 738,
+        "wires": []
+    },
+    {
+        "id": "1c9f8dbd6a88c731",
+        "type": "function",
+        "z": "b975189eeafb751a",
+        "name": "Estado",
+        "func": "var value = msg.payload.estado\n\nmsg = {\n    // ui_control: {\n    //     \"gtype\": \"wave\",\n    //     \"min\": 0,\n    //     \"max\": 100\n    // },\n    payload: value\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 666,
+        "wires": [
+            [
+                "06caff33513052c5"
+            ]
+        ]
+    },
+    {
+        "id": "06caff33513052c5",
+        "type": "ui_text",
+        "z": "b975189eeafb751a",
+        "group": "57a3c8c6be82297f",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Estado",
+        "format": "{{msg.payload}} ",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 652,
+        "y": 666,
+        "wires": []
     },
     {
         "id": "69429cdb3d5cde43",
