@@ -1,5 +1,13 @@
 [
     {
+        "id": "2662ed991e97f108",
+        "type": "tab",
+        "label": "Iniciar Bomba",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "0d22c13b3f5bba8c",
         "type": "tab",
         "label": "Registrarme",
@@ -223,11 +231,12 @@
             "c4f65e8b745f188a",
             "58335f524a98764c",
             "8d436f8455148d8c",
-            "3fc9484950c5daec"
+            "3fc9484950c5daec",
+            "74f45938f4b32cc8"
         ],
-        "x": 12,
+        "x": -6,
         "y": 31,
-        "w": 1328,
+        "w": 1520,
         "h": 208
     },
     {
@@ -965,6 +974,44 @@
                 "57121e79dc4b4ff7"
             ]
         ]
+    },
+    {
+        "id": "2e100a83135aeed8",
+        "type": "http in",
+        "z": "2662ed991e97f108",
+        "name": "InicioBomba",
+        "url": "/inicio-bomba",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 142,
+        "y": 90,
+        "wires": [
+            [
+                "8e13a3081a153b4f"
+            ]
+        ]
+    },
+    {
+        "id": "8e13a3081a153b4f",
+        "type": "http response",
+        "z": "2662ed991e97f108",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 472,
+        "y": 90,
+        "wires": []
+    },
+    {
+        "id": "49fa9c271525b5e4",
+        "type": "comment",
+        "z": "2662ed991e97f108",
+        "name": "",
+        "info": "Agregar Autenticacion x Rostro\nAgregar Autenticacion Simple\nAgregar Logica de cierre de bomba",
+        "x": 246,
+        "y": 144,
+        "wires": []
     },
     {
         "id": "2a36b45798d63afd",
@@ -2334,7 +2381,7 @@
         "operation": "find",
         "upsert": false,
         "multi": false,
-        "x": 282,
+        "x": 456,
         "y": 108,
         "wires": [
             [
@@ -2352,11 +2399,11 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 118,
+        "x": 100,
         "y": 108,
         "wires": [
             [
-                "8d548b6e221babc1"
+                "74f45938f4b32cc8"
             ]
         ]
     },
@@ -2373,7 +2420,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 282,
+        "x": 456,
         "y": 198,
         "wires": []
     },
@@ -2387,7 +2434,7 @@
             "8d548b6e221babc1"
         ],
         "uncaught": false,
-        "x": 274,
+        "x": 448,
         "y": 144,
         "wires": [
             [
@@ -2407,7 +2454,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 426,
+        "x": 600,
         "y": 108,
         "wires": [
             [
@@ -2434,7 +2481,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 562,
+        "x": 736,
         "y": 108,
         "wires": [
             [
@@ -2457,7 +2504,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 748,
+        "x": 922,
         "y": 72,
         "wires": [
             [
@@ -2485,7 +2532,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 728,
+        "x": 902,
         "y": 126,
         "wires": [
             [
@@ -2505,7 +2552,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1098,
+        "x": 1272,
         "y": 126,
         "wires": [
             [
@@ -2523,7 +2570,7 @@
         "headers": {
             "content-type": "application/json"
         },
-        "x": 1264,
+        "x": 1438,
         "y": 72,
         "wires": []
     },
@@ -2566,11 +2613,25 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 908,
+        "x": 1082,
         "y": 126,
         "wires": [
             [
                 "58335f524a98764c"
+            ]
+        ]
+    },
+    {
+        "id": "74f45938f4b32cc8",
+        "type": "subflow:e5b2f8bf37588cc1",
+        "z": "6f2117e9081c52cf",
+        "g": "8df2068a65345626",
+        "name": "Autenticar Simple",
+        "x": 288,
+        "y": 108,
+        "wires": [
+            [
+                "8d548b6e221babc1"
             ]
         ]
     },
